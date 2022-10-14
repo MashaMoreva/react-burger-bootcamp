@@ -1,20 +1,15 @@
 import React from 'react';
 import styles from './burger-ingredients.module.css';
-import { BurgerIngredientsTab } from '../burger-ingredients-tab/burger-ingredients-tab';
-import { BurgerIngredientsItem } from '../burger-ingredients-item/burger-ingredients-item';
+import { BurgerIngredientsTabs } from '../burger-ingredients-tabs/burger-ingredients-tabs';
+import { BurgerIngredientsSets } from '../burger-ingredients-sets/burger-ingredients-sets';
 
 
-export function BurgerIngredients () {
+export function BurgerIngredients({ ingredients }) {
     return (
         <section className={styles.burger_ingredients}>
             <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
-            <BurgerIngredientsTab />
-            <p className="text text_type_main-medium mt-10 mb-6">
-                Булки
-            </p>
-            <p className="text text_type_main-medium mt-10 mb-6">Соусы</p>
-            <p className="text text_type_main-medium mt-10 mb-6">Начинки</p>
-            <BurgerIngredientsItem />
+            <BurgerIngredientsTabs />
+            <BurgerIngredientsSets ingredients={ingredients}/>
         </section>
     )
 }
