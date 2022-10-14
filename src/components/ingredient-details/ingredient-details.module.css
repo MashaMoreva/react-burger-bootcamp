@@ -1,0 +1,29 @@
+.detailsModal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 720px;
+  height: 539px;
+  margin: auto;
+  background-color: #1C1C21;
+  border-radius: 40px;
+  /* visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity .5s ease-in;
+  background-color: rgba(0, 0, 0, .6); */
+}
+
+.closeDetails {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.description {
+  display: flex;
+  justify-content: space-around;
+  width: 520px;
+  margin: auto;
+  padding: 0;
+}

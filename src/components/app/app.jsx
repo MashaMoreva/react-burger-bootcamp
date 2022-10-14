@@ -6,6 +6,7 @@ import { BurgerIngredients } from '../burger-ingredients/burger-ingredients';
 import { BurgerConstructor } from '../burger-constructor/burger-constructor';
 import { Modal } from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
+import IngredientDetails from '../ingredient-details/ingredient-details';
 
 export default function App() {
   const [ingredients, setIngredients] = React.useState([]);
@@ -24,16 +25,32 @@ export default function App() {
 
   console.log(ingredients)
 
+  const [openModal, setOpenModal] = React.useState(false);
+  let [item, setItem] = React.useState({});
+
+  const handleOnButtonClick = () => {
+    setOpenModal(true);
+  }
+
+  const handleIngredientClick = () => {
+    setItem(item)
+    setOpenModal(true);
+  }
+
+  const closeModal = () => {
+    setOpenModal(false);
+  }
+
   return (
     <>
       <AppHeader />
       <main className={styles.content}>
-        <BurgerIngredients ingredients={ingredients} />
-        <BurgerConstructor />
+        <BurgerIngredients ingredients={ingredients} onIngredientClick={handleIngredientClick} ingredient={item}/>
+        <BurgerConstructor onButtonClick={handleOnButtonClick} />
       </main>
-      <Modal>
-        <OrderDetails />
-      </Modal>
+      {openModal && <Modal onClose={closeModal} ingredient={item}>
+        <IngredientDetails />
+      </Modal>}
     </>
   )
 }
