@@ -1,29 +1,37 @@
-.detailsModal {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 720px;
-  height: 539px;
-  margin: auto;
-  background-color: #1C1C21;
-  border-radius: 40px;
-  /* visibility: hidden;
-  opacity: 0;
-  transition: visibility .5s, opacity .5s ease-in;
-  background-color: rgba(0, 0, 0, .6); */
+.ingredient_details {
+  display: grid;
+
+  align-items: center;
 }
 
-.closeDetails {
-  position: absolute;
-  top: 60px;
-  right: 40px;
-  cursor: pointer;
-}
-
-.description {
-  display: flex;
-  justify-content: space-around;
-  width: 520px;
-  margin: auto;
+.nutrients {
+  list-style-type: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: 120px 112px 112px 112px;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.title {
+  display: flex;
+  text-align: start;
+  max-width: 640px;
+  min-height: 64px;
+  align-items: center;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.nutrient {
+  display: grid;
+  grid-template-rows: repeat(2, 24px);
+  gap: 8px;
+  text-align: center;
+}
+
+.text {
+ font-weight: 700;
 }

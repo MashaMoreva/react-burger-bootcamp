@@ -30,6 +30,6 @@ export function Modal({ children, onClose }) {
                 {children}
             </div>
         </>,
-        document.getElementById('root')
+        document.getElementById('modals')
     )
 }
