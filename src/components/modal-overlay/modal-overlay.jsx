@@ -1,7 +1,8 @@
 import styles from './modal-overlay.module.css';
+import { PropTypes } from 'prop-types';
 
 export function ModalOverlay({ onClose }) {
-    
+
     const closeModalOverlay = (evt) => {
         if (evt.target.classList.contains(styles.overlay)) {
             onClose()
@@ -14,3 +15,6 @@ export function ModalOverlay({ onClose }) {
     )
 }
 
+ModalOverlay.propTypes = {
+    onClose: PropTypes.func.isRequired
+}

@@ -7,7 +7,7 @@ import { setBun, addIngredient } from '../../services/actions/burger-constructor
 import { useDispatch, useSelector } from 'react-redux';
 import { BurgerConstructorElement } from '../burger-constructor-element/burger-constructor-element';
 import { deleteIngredient } from '../../services/actions/burger-constructor';
-
+import { PropTypes } from 'prop-types';
 
 export function BurgerConstructor({ handleOrderClick }) {
     const dispatch = useDispatch()
@@ -89,4 +89,8 @@ export function BurgerConstructor({ handleOrderClick }) {
                 : null}
         </section>
     )
+}
+
+BurgerConstructor.propTypes = {
+    handleOrderClick: PropTypes.func.isRequired
 }

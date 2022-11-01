@@ -14,7 +14,7 @@ export function BurgerIngredientsItem({ ingredient }) {
 
     const counter = useMemo(() => (
         main.filter((item) => item._id === ingredient._id).length || buns.filter((item) => item._id === ingredient._id).length * 2
-      ), [main, buns, ingredient._id]);
+    ), [main, buns, ingredient._id]);
 
     const dispatch = useDispatch();
     const handleIngredientClick = () => {
@@ -24,16 +24,16 @@ export function BurgerIngredientsItem({ ingredient }) {
     const [, dragIngredient] = useDrag(() => ({
         type: 'ingredient',
         item: {
-          ingredient,
-          id: ingredient._id,
-          type: ingredient.type
+            ingredient,
+            id: ingredient._id,
+            type: ingredient.type
         },
-      }), [])
-    
+    }), [])
+
 
     return (
         <article className={styles.item} onClick={handleIngredientClick} ref={dragIngredient}>
-            <Counter count={counter} size="default" />
+            {counter > 0 ? <Counter count={counter} size="default" /> : null}
             <img className="ml-4 mr-4" src={ingredient.image} alt={ingredient.name} />
             <div className={`${styles.price} mt-2 mb-2`}>
                 <p className="text text_type_digits-default">{ingredient.price}</p>

@@ -1,38 +1,27 @@
 import React from 'react';
 import styles from './burger-ingredients-tabs.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useRef } from 'react';
+import { setActiveTab, scrollIngredients } from '../../services/actions/burger-ingredients-scroll';
+import { useDispatch, useSelector } from 'react-redux';
 
 export function BurgerIngredientsTabs() {
 
-    
-
-    const [current, setCurrent] = React.useState('bun')
-    const bunRef = useRef();
-    const sauceRef = useRef();
-    const mainRef = useRef();
-
-    const scrollToRef = (ref) => {
-        if (ref === 'bun') {
-            bunRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
-        if (ref === 'sauce') {
-            sauceRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
-        if (ref === 'main') {
-            mainRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
+    const dispatch = useDispatch()
+    const current = useSelector(state => state.scrollIngredients.current)
+    const setCurrent = (value) => {
+        dispatch(setActiveTab(value))
+        dispatch(scrollIngredients(value))
     }
 
     return (
-        <div className={styles.listTab}>
-            <Tab value="bun" active={current === 'bun'} onClick={() => scrollToRef('bun')}>
+        <div className={styles.tab_list}>
+            <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
                 Булки
             </Tab>
-            <Tab value="sauce" active={current === 'sauce'} onClick={() => scrollToRef('sauce')}>
+            <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
                 Соусы
             </Tab>
-            <Tab value="main" active={current === 'main'} onClick={() => scrollToRef('main')}>
+            <Tab value="main" active={current === 'main'} onClick={setCurrent}>
                 Начинки
             </Tab>
         </div>

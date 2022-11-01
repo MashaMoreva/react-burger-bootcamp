@@ -4,6 +4,8 @@ import { useDrag, useDrop } from "react-dnd";
 import { moveIngredient } from "../../services/actions/burger-constructor";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
+import { PropTypes } from 'prop-types';
+import { ingredientType } from '../../utils/types';
 
 export function BurgerConstructorElement({ deleteElement, element, id, index }) {
 
@@ -76,4 +78,11 @@ export function BurgerConstructorElement({ deleteElement, element, id, index }) 
             />
         </li>
     )
+}
+
+BurgerConstructorElement.propTypes = {
+    element: ingredientType.isRequired,
+    deleteElement: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
 }

@@ -2,11 +2,11 @@ import {
     SET_BUN,
     ADD_INGREDIENT,
     DELETE_INGREDIENT,
-    MOVE_INGREDIENT
-}
-    from '../actions/burger-constructor';
+    MOVE_INGREDIENT,
+    CLEAR_CONSTRUCTOR
+} from '../actions/burger-constructor';
 
-export const burgerConstructorState = {
+const burgerConstructorState = {
     mainList: [], // между булок в конструкторе
     bunsList: [] // булки в конструкторе
 }
@@ -55,6 +55,13 @@ export const burgerConstructorReducer = (state = burgerConstructorState, action)
             return {
                 ...state,
                 mainList: res
+            }
+        }
+        case CLEAR_CONSTRUCTOR: {
+            return {
+                ...state,
+                mainList: [],
+                bunsList: []
             }
         }
         default: {
