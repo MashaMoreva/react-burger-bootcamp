@@ -1,6 +1,7 @@
 .burger_constructor {
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     align-items: end;
 }
 
@@ -10,37 +11,20 @@
     list-style-type: none;
 }
 
-.order_registartion {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    grid-template-rows: 64px;
-    gap: 42px;
-    align-items: center;
-}
-
-.order_cost {
-    display: flex;
-    align-items: center;
-}
-
 .order_cost svg {
     width: 33px;
     height: 33px;
     object-position: center;
 }
 
-.ingredient {
-    display: grid;
-    grid-template-columns: max-content 536px;
-    gap: 8px;
-    align-items: center;
-}
-
 .scroll_right {
-    height: 464px;
+    min-height: 0;
+    max-height: 464px;
     overflow: hidden;
     overflow-y: auto;
     overflow-x: hidden;
+    display: grid;
+    gap: 16px;
 }
 
 .scroll_right::-webkit-scrollbar {

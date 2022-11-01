@@ -10,9 +10,9 @@
 
 .scroll_left {
     height: 664px;
-    overflow: hidden;
+    /* overflow: hidden; */
     overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
   
   .scroll_left::-webkit-scrollbar {

@@ -4,16 +4,12 @@ import { BurgerIngredientsSets } from '../burger-ingredients-sets/burger-ingredi
 import { ingredientType } from '../../utils/types';
 import PropTypes from 'prop-types';
 
-export function BurgerIngredients({ ingredients, handleIngredientClick, ingredient }) {
+export function BurgerIngredients({ bunRef, sauceRef, mainRef }) {
     return (
         <section className={styles.burger_ingredients}>
             <h2 className="text text_type_main-large mt-10 mb-5">Соберите бургер</h2>
-            <BurgerIngredientsTabs />
-            <BurgerIngredientsSets ingredients={ingredients} handleIngredientClick={handleIngredientClick} ingredient={ingredient} />
+            <BurgerIngredientsTabs bunRef={bunRef} sauceRef={sauceRef} mainRef={mainRef} />
+            <BurgerIngredientsSets />
         </section>
     )
 }
-
-BurgerIngredients.propTypes = {
-    ingredients: PropTypes.arrayOf(ingredientType).isRequired,
-  }
