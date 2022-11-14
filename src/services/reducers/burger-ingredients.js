@@ -8,7 +8,6 @@ export const burgerIngredientsState = {
   burgerIngredients: [],
   burgerIngredientsRequest: false,
   burgerIngredientsError: false,
-  // current: 'bun'
 }
 
 export const burgerIngredientsReducer = (state = burgerIngredientsState, action) => {

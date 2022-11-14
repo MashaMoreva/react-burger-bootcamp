@@ -7,9 +7,8 @@ import { setBun, addIngredient } from '../../services/actions/burger-constructor
 import { useDispatch, useSelector } from 'react-redux';
 import { BurgerConstructorElement } from '../burger-constructor-element/burger-constructor-element';
 import { deleteIngredient } from '../../services/actions/burger-constructor';
-import { PropTypes } from 'prop-types';
 
-export function BurgerConstructor({ handleOrderClick }) {
+export function BurgerConstructor() {
     const dispatch = useDispatch()
 
     const main = useSelector(state => state.burgerConstructor.mainList)
@@ -85,12 +84,8 @@ export function BurgerConstructor({ handleOrderClick }) {
                 )}
             </ul>
             {buns.length > 0 ?
-                <OrderRegistration handleOrderClick={handleOrderClick} />
+                <OrderRegistration />
                 : null}
         </section>
     )
-}
-
-BurgerConstructor.propTypes = {
-    handleOrderClick: PropTypes.func.isRequired
 }

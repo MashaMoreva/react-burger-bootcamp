@@ -40,6 +40,11 @@
     color: #F2F2F3;
 }
 
+.link:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+}
+
 .personal_account {
     display: grid;
     grid-template-columns: 207px;

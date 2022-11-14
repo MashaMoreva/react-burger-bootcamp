@@ -1,0 +1,34 @@
+.content {
+    display: grid;
+    max-width: 1240px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin: 0 auto;
+  }
+
+.default {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    align-items: center;
+    margin: 180px auto;
+}
+
+.choice {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 8px;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    gap: 60px;
+    width: 1240px;
+    margin: 120px auto;
+}
+
+.profile_button {
+    border: none;
+    background-color: transparent;
+}
