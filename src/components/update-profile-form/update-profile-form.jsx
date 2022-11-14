@@ -51,7 +51,7 @@ export function UpdateProfileForm() {
                 placeholder={'Пароль'}
                 onChange={onChange}
                 onIconClick={onIconClick}
-                value={value}
+                value='*******'
                 name={'password'}
                 icon="EditIcon"
                 extraClass="mt-6"

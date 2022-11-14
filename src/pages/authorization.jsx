@@ -1,21 +1,38 @@
 import React from 'react';
 import styles from './pages.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userAuthorization } from '../services/actions/authorization';
 
 export function Authorization() {
     const dispatch = useDispatch();
+    const history = useHistory();
+    const authorization = JSON.parse(sessionStorage.getItem('authorization'));
+
+    // React.useEffect(() => {
+    //     if (authorization) {
+    //         history.push('/')
+    //     }
+    // }, [authorization, history])
+
+    React.useEffect(() => {
+        if (authorization) {
+            <Redirect to='/' />;
+
+        }
+    }, [authorization])
+
+
     const [value, setValue] = React.useState({
         email: '',
         password: ''
     })
-    
+
     const handleAuthorization = (evt) => {
         evt.preventDefault();
         dispatch(userAuthorization(value.email, value.password));
-      }
+    }
     const inputRef = React.useRef(null)
 
     return (
