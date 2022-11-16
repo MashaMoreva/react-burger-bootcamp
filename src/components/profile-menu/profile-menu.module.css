@@ -19,3 +19,13 @@
 .link_active {
     color: #F2F2F3;
 }
+
+.button {
+    text-align: start;
+    background: transparent;
+    border: none;
+}
+
+.button:hover {
+    opacity: .6;
+}

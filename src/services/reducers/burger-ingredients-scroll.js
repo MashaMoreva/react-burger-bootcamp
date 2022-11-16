@@ -3,12 +3,12 @@ import {
     SCROLL_INGREDIENTS
 } from '../actions/burger-ingredients-scroll'
 
-const scrollState = {
+const initialState = {
     current: 'bun',
     scroll: 'bun'
 }
 
-export const scrollIngredientsReducer = (state = scrollState, action) => {
+export const scrollIngredientsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_ACTIVE_TAB: {
             return {

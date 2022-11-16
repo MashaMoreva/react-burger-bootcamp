@@ -6,12 +6,12 @@ import {
     CLEAR_CONSTRUCTOR
 } from '../actions/burger-constructor';
 
-const burgerConstructorState = {
+const initialState = {
     mainList: [], // между булок в конструкторе
     bunsList: [] // булки в конструкторе
 }
 
-export const burgerConstructorReducer = (state = burgerConstructorState, action) => {
+export const burgerConstructorReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_BUN: {
             return {

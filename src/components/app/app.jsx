@@ -13,6 +13,8 @@ import { ForgotPassword } from '../../pages/forgot-password';
 import { ResetPassword } from '../../pages/reset-password';
 import { Profile } from '../../pages/profile';
 import { Main } from '../../pages/main';
+import { ProtectedRoute } from '../protected-route/protected-route';
+import { Feed } from '../../pages/feed';
 
 export default function App() {
 
@@ -38,6 +40,8 @@ export default function App() {
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/profile" component={Profile} />
+        {/* <ProtectedRoute path="/profile" component={Profile} /> */}
+        <Route path="/feed" component={Feed} />
       </Switch>
 
       {openIngredientDetailsModal && (

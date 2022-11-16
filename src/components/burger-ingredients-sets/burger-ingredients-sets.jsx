@@ -28,9 +28,9 @@ export function BurgerIngredientsSets() {
 
     useEffect(() => {
         const headings = [
-            bunRef.current,
+            mainRef.current,
             sauceRef.current,
-            mainRef.current
+            bunRef.current
         ]
         const observer = new IntersectionObserver((headings) => {
             headings.forEach((heading) => {

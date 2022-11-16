@@ -1,21 +1,34 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './pages.module.css';
 import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { forgotPassword } from '../services/actions/forgot-password';
 
 export function ForgotPassword() {
 
     const dispatch = useDispatch();
+
+    const success = useSelector((state) => state.forgotPassword.success);
+    const authorization = useSelector((state) => state.userAuthorization.authorization);
+
     const [value, setValue] = React.useState({
         email: ''
     })
-    
-    const handleRecover = (evt) => {
+
+    const handleRecover = React.useCallback((evt) => {
         evt.preventDefault();
         dispatch(forgotPassword(value.email));
-      }
+        
+    }, [dispatch])
+
+    if (success) {
+        return (
+            <Redirect to={'/reset-password'} />
+        )
+    }
+
+    
 
     return (
         <form className={styles.default} onSubmit={handleRecover}>

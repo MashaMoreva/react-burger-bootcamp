@@ -1,4 +1,5 @@
 import { apiBurger } from "../../utils/api";
+import { deleteCookie } from "../../utils/сookies";
 
 export const USER_LOGOUT_REQUEST = 'USER_LOGOUT_REQUEST';
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
@@ -9,10 +10,11 @@ const userLogoutSuccess = (payload) => ({ type: USER_LOGOUT_SUCCESS, payload })
 export function userLogout() {
     return (dispatch) =>
         apiBurger.logout()
-            .then((data) => {
-                const { success } = data
+            .then(({ success }) => {
                 if (success) {
-                    dispatch(userLogoutSuccess(data));
+                    deleteCookie('access');
+                    deleteCookie('refresh');
+                    dispatch(userLogoutSuccess(success));
                 }
             })
             .catch((error) => {

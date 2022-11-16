@@ -4,13 +4,13 @@ import {
   GET_BURGER_INGREDIENTS_ERROR
 } from '../actions/burger-ingredients'
 
-export const burgerIngredientsState = {
+export const initialState = {
   burgerIngredients: [],
   burgerIngredientsRequest: false,
   burgerIngredientsError: false,
 }
 
-export const burgerIngredientsReducer = (state = burgerIngredientsState, action) => {
+export const burgerIngredientsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BURGER_INGREDIENTS_REQUEST: {
       return {

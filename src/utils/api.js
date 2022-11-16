@@ -1,4 +1,4 @@
-import { getCookie } from "./coockie";
+import { getCookie } from "./сookies";
 
 export const config = {
   baseUrl: 'https://norma.nomoreparties.space/api', // базовый путь к серверу
@@ -84,9 +84,9 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
+        name,
+        email,
+        password
       })
     }
     return this._request(this._makeUrl(this._registrationEndpoint), options)
@@ -97,8 +97,8 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email,
+        password
       })
     }
     return this._request(this._makeUrl(this._authorizationEndpoint), options)

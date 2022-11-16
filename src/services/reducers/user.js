@@ -1,4 +1,5 @@
 import { GET_USER_SUCCESS } from "../actions/user";
+import { UPDATE_USER_SUCCESS } from "../actions/user";
 
 const initialState = {
   success: false,
@@ -8,7 +9,7 @@ const initialState = {
   },
 };
 
-export const getProfileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_SUCCESS: {
       return {
@@ -17,15 +18,16 @@ export const getProfileReducer = (state = initialState, action) => {
         user: action.payload.user,
       }
     }
-    // case PATCH_USER_INFO: {
-    //   return {
-    //     ...state,
-    //     success: action.payload.success,
-    //     user: action.payload.user,
-    //   }
-    // }
+    case UPDATE_USER_SUCCESS: {
+      return {
+        ...state,
+        success: action.payload.success,
+        user: action.payload.user,
+      }
+    }
     default: {
       return state;
     }
   }
 }
+

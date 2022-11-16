@@ -3,59 +3,97 @@ import styles from './update-profile-form.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../services/actions/user';
+import { updateUser } from '../../services/actions/user';
 
 export function UpdateProfileForm() {
 
     const dispatch = useDispatch();
-    const userName = useSelector(state => state.getProfile.user.name);
-    const userEmail = useSelector(state => state.getProfile.user.email);
+    const userName = useSelector(state => state.profile.user.name);
+    const userEmail = useSelector(state => state.profile.user.email);
 
     React.useEffect(() => {
         dispatch(getUser());
     }, [dispatch])
 
-    const [value, setValue] = React.useState()
+
+    const [value, setValue] = React.useState({
+        name: userName,
+        email: userEmail,
+        password: ''
+    })
+
+    // React.useEffect(() => {
+    //     setValue({
+    //         name: userName,
+    //         email: userEmail,
+    //         password: ''
+    //     })
+    // }, [userName, userEmail])
+
+    const updateProfile = (evt) => {
+        evt.preventDefault();
+        dispatch(updateUser(value.name, value.email, value.password));
+        // setValue({
+        //   name: userName,
+        //   email: userEmail,
+        //   password: ''
+        // })
+    }
+
+    const cancelEditing = () => {
+        setValue({
+            name: userName,
+            email: userEmail,
+            password: ''
+        })
+    }
+
     const inputRef = React.useRef(null)
     const onIconClick = () => {
         setTimeout(() => inputRef.current.focus(), 0)
-        alert('Icon Click Callback')
-    }
-    const onChange = e => {
-        setValue(e.target.value)
     }
 
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={updateProfile}>
             <Input
                 type={'text'}
                 placeholder={'Имя'}
-                onChange={e => setValue(e.target.value)}
-                value={userName}
+                onChange={(evt) => setValue({ ...value, name: evt.target.value })}
+                value={value.name}
                 name={'name'}
                 error={false}
                 ref={inputRef}
-                onIconClick={onIconClick}
+                onIconClick={() => onIconClick()}
                 errorText={'Ошибка'}
                 size={'default'}
                 icon="EditIcon"
             />
-            <EmailInput
+            <Input
+                type={'email'}
                 placeholder={'Логин'}
-                onChange={onChange}
-                value={userEmail}
+                onChange={(evt) => setValue({ ...value, email: evt.target.value })}
+                value={value.email}
                 name={'email'}
                 icon="EditIcon"
                 extraClass="mt-6"
+                ref={inputRef}
+                onIconClick={() => onIconClick()}
             />
-            <PasswordInput
+            <Input
+                type={'password'}
                 placeholder={'Пароль'}
-                onChange={onChange}
-                onIconClick={onIconClick}
-                value='*******'
+                onChange={(evt) => setValue({ ...value, password: evt.target.value })}
+                ref={inputRef}
+                onIconClick={() => onIconClick()}
+                value={value.password}
                 name={'password'}
                 icon="EditIcon"
                 extraClass="mt-6"
             />
+            <Button type="primary" size="medium" htmlType="reset" extraClass="mt-6" onClick={cancelEditing}>Отмена</Button>
+            <Button type="primary" size="medium" htmlType="submit" extraClass="mt-6">Сохранить</Button>
         </form>
     )
 }
+
+// `${styles.link}`

@@ -4,13 +4,13 @@ import {
   GET_ORDER_DETAILS_ERROR
 } from '../actions/order-details'
 
-export const orderDetailsState = {
+export const initialState = {
   id: '',
   orderDetailsRequest: false,
   orderDetailsError: false
 }
 
-export const orderDetailsReducer = (state = orderDetailsState, action) => {
+export const orderDetailsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ORDER_DETAILS_REQUEST: {
       return {

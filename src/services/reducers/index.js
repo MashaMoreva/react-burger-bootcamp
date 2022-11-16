@@ -5,7 +5,10 @@ import { burgerConstructorReducer } from './burger-constructor';
 import { orderDetailsReducer } from './order-details';
 import { scrollIngredientsReducer } from './burger-ingredients-scroll';
 import { userRegistrationReducer } from './registration';
-import { getProfileReducer } from './user';
+import { forgotPasswordReducer } from './forgot-password';
+import { resetPasswordReducer } from './reset-password';
+import { userAuthorizationReducer } from './authorization';
+import { profileReducer } from './user';
 
 export const rootReducer = combineReducers({
     burgerIngredients: burgerIngredientsReducer,
@@ -14,5 +17,8 @@ export const rootReducer = combineReducers({
     orderDetails: orderDetailsReducer,
     scrollIngredients: scrollIngredientsReducer,
     registration: userRegistrationReducer,
-    getProfile: getProfileReducer,
+    forgotPassword: forgotPasswordReducer,
+    resetPassword: resetPasswordReducer,
+    userAuthorization: userAuthorizationReducer,
+    profile: profileReducer,
   })

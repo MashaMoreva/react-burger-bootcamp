@@ -1,28 +1,14 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './pages.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { userAuthorization } from '../services/actions/authorization';
 
 export function Authorization() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const authorization = JSON.parse(sessionStorage.getItem('authorization'));
-
-    // React.useEffect(() => {
-    //     if (authorization) {
-    //         history.push('/')
-    //     }
-    // }, [authorization, history])
-
-    React.useEffect(() => {
-        if (authorization) {
-            <Redirect to='/' />;
-
-        }
-    }, [authorization])
-
+    const authorization = useSelector((state) => state.userAuthorization.authorization);
 
     const [value, setValue] = React.useState({
         email: '',
@@ -33,7 +19,12 @@ export function Authorization() {
         evt.preventDefault();
         dispatch(userAuthorization(value.email, value.password));
     }
-    const inputRef = React.useRef(null)
+
+    React.useEffect(() => {
+        if (authorization) {
+            history.push('/')
+        }
+    }, [authorization, history])
 
     return (
         <form className={styles.default} onSubmit={handleAuthorization}>
