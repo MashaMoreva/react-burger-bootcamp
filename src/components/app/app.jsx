@@ -32,7 +32,6 @@ export default function App() {
   }, [dispatch])
 
 
-
   return (
     <>
       <AppHeader />
@@ -45,13 +44,15 @@ export default function App() {
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/profile" component={Profile} />
         {/* <ProtectedRoute path="/profile" component={Profile} /> */}
-        <Route exact={true} path="/ingredients/:id" component={IngredientDetails} />
+        <Route path="/ingredients/:id" >
+          <IngredientDetails />
+        </Route>
         <Route path="/feed" component={Feed} />
       </Switch>
 
       {background && (
         <>
-          <Route exact={true} path="/ingredients/:id">
+          <Route path="/ingredients/:id">
             {openIngredientDetailsModal && (
               <Modal onClose={closeIngredientsModal}>
                 <IngredientDetails />
@@ -64,3 +65,4 @@ export default function App() {
   )
 }
 
+// 

@@ -21,6 +21,7 @@ export function BurgerIngredientsItem({ ingredient }) {
     const dispatch = useDispatch();
     const handleIngredientClick = () => {
         dispatch(addIgredientDetails(ingredient))
+        sessionStorage.setItem('ingredient', JSON.stringify(ingredient))
     }
 
     const [, dragIngredient] = useDrag(() => ({
@@ -38,7 +39,8 @@ export function BurgerIngredientsItem({ ingredient }) {
             <Link to={{
                 pathname: `/ingredients/${ingredient._id}`,
                 state: { background: location },
-            }}>
+            }}
+            className={`${styles.link} text text_type_main-default`}>
                 {counter > 0 ? <Counter count={counter} size="default" /> : null}
                 <img className="ml-4 mr-4" src={ingredient.image} alt={ingredient.name} />
                 <div className={`${styles.price} mt-2 mb-2`}>

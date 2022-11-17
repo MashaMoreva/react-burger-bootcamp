@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux';
 
 export function IngredientDetails() {
 
-  const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
+  const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails) || JSON.parse(sessionStorage.getItem('ingredient'))
+  console.log (sessionStorage.getItem('ingredient'))
+ 
   return (
     <>
       <h2 className={`${styles.title} text text_type_main-large mt-10 ml-10`}>Детали ингредиента</h2>
