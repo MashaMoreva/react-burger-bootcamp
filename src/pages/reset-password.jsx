@@ -10,7 +10,7 @@ export function ResetPassword() {
     const dispatch = useDispatch();
 
     const forgot = useSelector((state) => state.forgotPassword.success);
-
+    const authorization = useSelector((state) => state.userAuthorization.authorization);
 
     const [value, setValue] = React.useState({
         password: '',
@@ -34,7 +34,12 @@ export function ResetPassword() {
             <Redirect to={'/login'} />
         )
     }
-
+    
+    if (authorization) {
+        return (
+            <Redirect to={'/profile'} />
+        )
+    }
 
     return (
         <form className={styles.default} onSubmit={handleReset}>

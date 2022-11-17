@@ -1,12 +1,14 @@
-
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './pages.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
 import { userRegistration } from '../services/actions/registration';
+import { Link, Redirect } from 'react-router-dom';
 
 export function Registration() {
+
+    const authorization = useSelector((state) => state.userAuthorization.authorization);
+
     const dispatch = useDispatch();
     const [value, setValue] = React.useState({
         name: '',
@@ -22,6 +24,12 @@ export function Registration() {
     const onIconClick = () => {
         setTimeout(() => inputRef.current.focus(), 0)
         alert('Icon Click Callback')
+    }
+
+    if (authorization) {
+        return (
+            <Redirect to={'/profile'} />
+        )
     }
 
     return (

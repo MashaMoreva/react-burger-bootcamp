@@ -20,12 +20,12 @@ export function Authorization() {
         dispatch(userAuthorization(value.email, value.password));
     }
 
-    React.useEffect(() => {
-        if (authorization) {
-            history.push('/')
-        }
-    }, [authorization, history])
-
+    if (authorization) {
+        return (
+            <Redirect to={'/profile'} />
+        )
+    }
+    
     return (
         <form className={styles.default} onSubmit={handleAuthorization}>
             <h2 className="text text_type_main-medium">Вход</h2>

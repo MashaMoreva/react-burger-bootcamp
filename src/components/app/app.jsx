@@ -6,7 +6,7 @@ import { Modal } from '../modal/modal';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
 import { getBurgerIngredients } from '../../services/actions/burger-ingredients';
 import { deleteIgredientDetails } from '../../services/actions/ingredient-details';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { Registration } from '../../pages/registration';
 import { Authorization } from '../../pages/authorization';
 import { ForgotPassword } from '../../pages/forgot-password';
@@ -19,6 +19,8 @@ import { Feed } from '../../pages/feed';
 export default function App() {
 
   const dispatch = useDispatch();
+  const location = useLocation();
+  const background = location.state && location.state.background;
 
   React.useEffect(() => {
     dispatch(getBurgerIngredients())
@@ -29,11 +31,13 @@ export default function App() {
     dispatch(deleteIgredientDetails())
   }, [dispatch])
 
+
+
   return (
     <>
       <AppHeader />
 
-      <Switch>
+      <Switch location={background || location}>
         <Route exact={true} path="/" component={Main} />
         <Route path="/register" component={Registration} />
         <Route path="/login" component={Authorization} />
@@ -41,15 +45,22 @@ export default function App() {
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/profile" component={Profile} />
         {/* <ProtectedRoute path="/profile" component={Profile} /> */}
+        <Route exact={true} path="/ingredients/:id" component={IngredientDetails} />
         <Route path="/feed" component={Feed} />
       </Switch>
 
-      {openIngredientDetailsModal && (
-        <Modal onClose={closeIngredientsModal}>
-          <IngredientDetails />
-        </Modal>
+      {background && (
+        <>
+          <Route exact={true} path="/ingredients/:id">
+            {openIngredientDetailsModal && (
+              <Modal onClose={closeIngredientsModal}>
+                <IngredientDetails />
+              </Modal>
+            )}
+          </Route>
+        </>
       )}
-      
     </>
   )
 }
+

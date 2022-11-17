@@ -19,7 +19,7 @@ export function ForgotPassword() {
     const handleRecover = React.useCallback((evt) => {
         evt.preventDefault();
         dispatch(forgotPassword(value.email));
-        
+
     }, [dispatch])
 
     if (success) {
@@ -27,8 +27,12 @@ export function ForgotPassword() {
             <Redirect to={'/reset-password'} />
         )
     }
-
     
+    if (authorization) {
+        return (
+            <Redirect to={'/profile'} />
+        )
+    }
 
     return (
         <form className={styles.default} onSubmit={handleRecover}>
