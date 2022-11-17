@@ -22,13 +22,13 @@ export function UpdateProfileForm() {
         password: ''
     })
 
-    // React.useEffect(() => {
-    //     setValue({
-    //         name: userName,
-    //         email: userEmail,
-    //         password: ''
-    //     })
-    // }, [userName, userEmail])
+    React.useEffect(() => {
+        setValue({
+            name: userName,
+            email: userEmail,
+            password: ''
+        })
+    }, [userName, userEmail])
 
     const updateProfile = (evt) => {
         evt.preventDefault();
@@ -90,10 +90,10 @@ export function UpdateProfileForm() {
                 icon="EditIcon"
                 extraClass="mt-6"
             />
-            <Button type="primary" size="medium" htmlType="reset" extraClass="mt-6" onClick={cancelEditing}>Отмена</Button>
-            <Button type="primary" size="medium" htmlType="submit" extraClass="mt-6">Сохранить</Button>
+            <div className={`${styles.choice} mt-6`}>
+                <Button type="secondary" size="medium" htmlType="reset" extraClass="pr-7" onClick={cancelEditing}>Отмена</Button>
+                <Button type="primary" size="medium" htmlType="submit">Сохранить</Button>
+            </div>
         </form>
     )
 }
-
-// `${styles.link}`

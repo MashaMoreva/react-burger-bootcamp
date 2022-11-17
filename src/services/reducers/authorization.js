@@ -1,8 +1,9 @@
+import { getCookie } from "../../utils/сookies"
 import { USER_AUTHORIZATION_SUCCESS } from "../actions/authorization"
 import { USER_LOGOUT_SUCCESS } from "../actions/logout"
 
 export const initialState = {
-    authorization: false,
+    authorization: getCookie('access') ? true : false,
     user: {}
 }
 
