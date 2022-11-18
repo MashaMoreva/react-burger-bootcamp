@@ -13,8 +13,10 @@ import { ForgotPassword } from '../../pages/forgot-password';
 import { ResetPassword } from '../../pages/reset-password';
 import { Profile } from '../../pages/profile';
 import { Main } from '../../pages/main';
+import { IngredientInfo } from '../../pages/ingredient-details';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import { Feed } from '../../pages/feed';
+import { getUser } from '../../services/actions/user';
 
 export default function App() {
 
@@ -25,6 +27,10 @@ export default function App() {
   React.useEffect(() => {
     dispatch(getBurgerIngredients())
   }, [dispatch])
+
+  React.useEffect(() => {
+    dispatch(getUser());
+}, [dispatch])
 
   const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
   const closeIngredientsModal = useCallback(() => {
@@ -42,10 +48,10 @@ export default function App() {
         <Route path="/login" component={Authorization} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/reset-password" component={ResetPassword} />
-        <Route path="/profile" component={Profile} />
-        {/* <ProtectedRoute path="/profile" component={Profile} /> */}
+        {/* <Route path="/profile" component={Profile} /> */}
+        <ProtectedRoute path="/profile" component={Profile} />
         <Route path="/ingredients/:id" >
-          <IngredientDetails />
+          <IngredientInfo />
         </Route>
         <Route path="/feed" component={Feed} />
       </Switch>

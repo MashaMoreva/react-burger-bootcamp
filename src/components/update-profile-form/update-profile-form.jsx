@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './update-profile-form.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../services/actions/user';
+
 import { updateUser } from '../../services/actions/user';
 
 export function UpdateProfileForm() {
@@ -11,9 +11,7 @@ export function UpdateProfileForm() {
     const userName = useSelector(state => state.profile.user.name);
     const userEmail = useSelector(state => state.profile.user.email);
 
-    React.useEffect(() => {
-        dispatch(getUser());
-    }, [dispatch])
+   
 
 
     const [value, setValue] = React.useState({
