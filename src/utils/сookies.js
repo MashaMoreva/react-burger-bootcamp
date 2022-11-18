@@ -31,5 +31,5 @@ export function getCookie(name) {
 }
 
 export function deleteCookie(name) {
-  setCookie(name, null)
+  setCookie(name, '')
 }

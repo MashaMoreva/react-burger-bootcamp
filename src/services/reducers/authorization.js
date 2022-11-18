@@ -3,7 +3,7 @@ import { USER_AUTHORIZATION_SUCCESS } from "../actions/authorization"
 import { USER_LOGOUT_SUCCESS } from "../actions/logout"
 
 export const initialState = {
-    authorization: getCookie('access') ? true : false, 
+    authorization: getCookie('access') ? true : false,
     user: {}
 }
 
@@ -12,7 +12,7 @@ export const userAuthorizationReducer = (state = initialState, action) => {
         case USER_AUTHORIZATION_SUCCESS: {
             return {
                 ...state,
-                authorization: action.payload.success,
+                authorization: true,
                 user: action.payload.user
             }
         }

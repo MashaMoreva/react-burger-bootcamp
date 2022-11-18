@@ -13,10 +13,9 @@ import { ForgotPassword } from '../../pages/forgot-password';
 import { ResetPassword } from '../../pages/reset-password';
 import { Profile } from '../../pages/profile';
 import { Main } from '../../pages/main';
-import { IngredientInfo } from '../../pages/ingredient-details';
+import { IngredientInfo } from '../../pages/ingredient-info';
 import { ProtectedRoute } from '../protected-route/protected-route';
 import { Feed } from '../../pages/feed';
-import { getUser } from '../../services/actions/user';
 
 export default function App() {
 
@@ -28,13 +27,11 @@ export default function App() {
     dispatch(getBurgerIngredients())
   }, [dispatch])
 
-  React.useEffect(() => {
-    dispatch(getUser());
-}, [dispatch])
-
+  
   const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
   const closeIngredientsModal = useCallback(() => {
     dispatch(deleteIgredientDetails())
+    window.history.pushState(null, '', '/')
   }, [dispatch])
 
 
@@ -53,12 +50,12 @@ export default function App() {
         <Route path="/ingredients/:id" >
           <IngredientInfo />
         </Route>
-        <Route path="/feed" component={Feed} />
+        <ProtectedRoute path="/feed" component={Feed} />
       </Switch>
 
       {background && (
         <>
-          <Route path="/ingredients/:id">
+          <Route path="/ingredients/:id" >
             {openIngredientDetailsModal && (
               <Modal onClose={closeIngredientsModal}>
                 <IngredientDetails />
