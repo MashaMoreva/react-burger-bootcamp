@@ -10,12 +10,6 @@ export function BurgerIngredientsSets() {
     const dispatch = useDispatch()
     const scroll = useSelector(state => state.scrollIngredients.scroll)
     
-    // function useRef<T>(initialValue?: T): MutableRefObject<T>
-    // interface MutableRefObject<T> {
-    //     current: T;
-    //   }
-    // React.MutableRefObject<HTMLParagraphElement | undefined>
-    
     const bunRef = React.useRef<HTMLParagraphElement>(null);
     const sauceRef = React.useRef<HTMLParagraphElement>(null);
     const mainRef = React.useRef<HTMLParagraphElement>(null);
@@ -39,7 +33,7 @@ export function BurgerIngredientsSets() {
             sauceRef.current,
             bunRef.current
         ]
-        const observer = new IntersectionObserver((headings) => {
+        const observer = new IntersectionObserver((headings: IntersectionObserverEntry[]) => {
             headings.forEach((heading) => {
                 if (heading.target === bunRef.current) {
                     dispatch(setActiveTab('bun'))

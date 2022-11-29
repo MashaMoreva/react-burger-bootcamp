@@ -1,0 +1,74 @@
+.item {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 584px;
+    grid-auto-rows: max-content;
+
+}
+
+.order {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scroll_left {
+    height: 664px;
+    /* overflow: hidden; */
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+}
+
+.scroll_left::-webkit-scrollbar {
+    width: 8px;
+    background-color: #2F2F37;
+}
+
+.scroll_left::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
+}
+
+.price {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+}
+
+.order_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.list_item {
+    position: relative;
+    background-color: black;
+    width: 64px;
+    height: 64px;
+    margin-left: -20px;
+    border-radius: 50%;
+    background: linear-gradient(black, black) padding-box,
+        linear-gradient(to right, rgba(76, 76, 255, 1), rgba(128, 26, 178, 1)) border-box;
+    border: 2px solid transparent;
+    overflow: hidden;
+    z-index: 4;
+}
+
+.list_image {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}

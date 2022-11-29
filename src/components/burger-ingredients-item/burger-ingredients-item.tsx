@@ -40,10 +40,10 @@ export const BurgerIngredientsItem: FC<TBurgerIngredientsItem> = ({ ingredient }
                 pathname: `/ingredients/${ingredient._id}`,
                 state: { background: location },
             }}
-                className={`${styles.link} text text_type_main-default`}>
+                className={styles.link}>
                 {counter > 0 ? <Counter count={counter} size="default" /> : null}
                 <img className="ml-4 mr-4" src={ingredient.image} alt={ingredient.name} />
-                <div className={`${styles.price} mt-2 mb-2`}>
+                <div className={`${styles.price} mt-1 mb-2`}>
                     <p className="text text_type_digits-default">{ingredient.price}</p>
                     <CurrencyIcon type="primary" />
                 </div>
