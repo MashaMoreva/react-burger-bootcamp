@@ -1,16 +1,7 @@
-.text {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
-    text-align: center;
-    max-width: 480px;
-}
-
 .scroll {
-    margin-top: 44px;
     display: grid;
     gap: 16px;
+    grid-template-columns: 584px;
     grid-auto-rows: max-content;
     height: 664px;
     overflow-y: auto;
@@ -23,10 +14,4 @@
 
 .scroll::-webkit-scrollbar-thumb {
     background-color: #8585AD;
-}
-
-.scroll article {
-    padding-top: 22px;
-    padding-left: 16px;
-    width: 808px;
 }

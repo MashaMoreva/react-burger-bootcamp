@@ -1,30 +1,13 @@
 .item {
+    background-color: #1C1C21;
+    border-radius: 30px;
     display: grid;
-    gap: 24px;
-    grid-template-columns: 584px;
-    grid-auto-rows: max-content;
-
+    gap: 24px
 }
 
 .order {
     display: flex;
     justify-content: space-between;
-}
-
-.scroll_left {
-    height: 664px;
-    /* overflow: hidden; */
-    overflow-y: auto;
-    /* overflow-x: hidden; */
-}
-
-.scroll_left::-webkit-scrollbar {
-    width: 8px;
-    background-color: #2F2F37;
-}
-
-.scroll_left::-webkit-scrollbar-thumb {
-    background-color: #8585AD;
 }
 
 .price {
@@ -43,11 +26,11 @@
 
 .list {
     display: flex;
+    flex-direction: row-reverse;
     list-style-type: none;
-    padding: 0;
+    padding-left: 20px;
     margin: 0;
 }
-
 
 .list_item {
     position: relative;
@@ -60,7 +43,7 @@
         linear-gradient(to right, rgba(76, 76, 255, 1), rgba(128, 26, 178, 1)) border-box;
     border: 2px solid transparent;
     overflow: hidden;
-    z-index: 4;
+    z-index: 3;
 }
 
 .list_image {

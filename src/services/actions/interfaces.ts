@@ -16,9 +16,15 @@ import {
     USER_REGISTRATION_SUCCESS,
     RESET_PASSWORD_SUCCESS,
     GET_USER_SUCCESS,
-    UPDATE_USER_SUCCESS
+    UPDATE_USER_SUCCESS,
+    WS_CONNECTION_START,
+    WS_CONNECTION_START_USER,
+    WS_CONNECTION_SUCCESS,
+    WS_CONNECTION_ERROR,
+    WS_CONNECTION_CLOSED,
+    WS_GET_ORDERS
 } from "../constants/constants"
-import { TIngredientType, TUser} from "../types/types"
+import { TIngredientType, TUser, TOrders } from "../types/types"
 
 export interface IUserAuthorizationSuccess {
     readonly type: typeof USER_AUTHORIZATION_SUCCESS,
@@ -112,22 +118,64 @@ export interface IUpdateUserSuccess {
 }
 
 export type TUnionAction =
-  | IUserAuthorizationSuccess
-  | ISetBun
-  | IAddIngredient
-  | IDeleteIngredient
-  | IMoveIngredient
-  | IClearConstructor
-  | ISetActiveTab
-  | IScrollIngredients
-  | IGetBurgerIngredientsSuccess
-  | IForgotPasswordSuccess
-  | IAddIgredientDetails
-  | IDeleteIgredientDetails
-  | IUserLogoutSuccess
-  | IGetOrderDetailsSuccess
-  | IUserRegistrationSuccess
-  | IResetPasswordSuccess
-  | IGetBurgerIngredientsSuccess
-  | IGetUserSuccess
-  | IUpdateUserSuccess
+    | IUserAuthorizationSuccess
+    | ISetBun
+    | IAddIngredient
+    | IDeleteIngredient
+    | IMoveIngredient
+    | IClearConstructor
+    | ISetActiveTab
+    | IScrollIngredients
+    | IGetBurgerIngredientsSuccess
+    | IForgotPasswordSuccess
+    | IAddIgredientDetails
+    | IDeleteIgredientDetails
+    | IUserLogoutSuccess
+    | IGetOrderDetailsSuccess
+    | IUserRegistrationSuccess
+    | IResetPasswordSuccess
+    | IGetBurgerIngredientsSuccess
+    | IGetUserSuccess
+    | IUpdateUserSuccess
+
+export interface IWsConnectionStart {
+    readonly type: typeof WS_CONNECTION_START
+}
+
+export interface IWsConnectionStartUser {
+    readonly type: typeof WS_CONNECTION_START_USER
+}
+
+export interface IWsConnectionSuccess {
+    readonly type: typeof WS_CONNECTION_SUCCESS
+}
+
+export interface IWsConnectionError {
+    readonly type: typeof WS_CONNECTION_ERROR
+}
+
+export interface IWsConnectionClosed {
+    readonly type: typeof WS_CONNECTION_CLOSED
+}
+
+export interface IWsGetOrders {
+    readonly type: typeof WS_GET_ORDERS,
+    readonly payload: TOrders
+}
+
+export type TUnionWsAction =
+    | IWsConnectionStart
+    | IWsConnectionStartUser
+    | IWsConnectionSuccess
+    | IWsConnectionError
+    | IWsConnectionClosed
+    | IWsGetOrders
+
+export interface IWsActions {
+    readonly wsInit: typeof WS_CONNECTION_START;
+    readonly wsUser: typeof WS_CONNECTION_START_USER;
+    readonly onOpen: typeof WS_CONNECTION_SUCCESS;
+    readonly onClose: typeof WS_CONNECTION_CLOSED;
+    readonly onError: typeof WS_CONNECTION_ERROR;
+    readonly onOrders: typeof WS_GET_ORDERS;
+}

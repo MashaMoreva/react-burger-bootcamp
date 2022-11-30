@@ -93,3 +93,20 @@ export type TModalOverlay = {
 export type TOrderRegistration = {
   handleOrderClick: () => void
 }
+
+export type TOrder = {
+  ingredients: Array<string>,
+  _id: string,
+  status: string,
+  number: number,
+  createdAt: string,
+  updatedAt: string,
+  name: string
+}
+
+export type TOrders = {
+  success: boolean,
+  orders: Array<TOrder>,
+  total: number,
+  totalToday: number
+}

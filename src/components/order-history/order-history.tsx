@@ -1,8 +1,19 @@
 import styles from './order-history.module.css';
+import { OrderItem } from '../order-item/order-item';
 
 export function OrderHistory() {
 
     return (
-        <span className={`${styles.text} text text_type_main-medium text_color_inactive`}>будет реализовано в следующем спринте</span>
+        <>
+            <div className={styles.scroll}>
+                <OrderItem />
+                <OrderItem />
+                <OrderItem />
+                <OrderItem />
+                <OrderItem />
+                <OrderItem />
+                <OrderItem />
+            </div>
+        </>
     )
 }

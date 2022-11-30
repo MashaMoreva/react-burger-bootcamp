@@ -94,9 +94,9 @@ class Api {
   };
 
   _request(
-    url: string, 
+    url: string,
     options: IOptions
-    ) {
+  ) {
     return fetch(url, options)
       .then(this._handleResponse)
   }
@@ -113,7 +113,10 @@ class Api {
   getOrderDetails(idIngredientsList: string[]) {
     const options = {
       method: 'POST',
-      headers: this.defaultHeaders,
+      headers: {
+        authorization: 'Bearer ' + getCookie('access'),
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         ingredients: idIngredientsList
       })
