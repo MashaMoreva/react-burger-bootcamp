@@ -5,6 +5,9 @@
     grid-auto-rows: max-content;
     height: 664px;
     overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .scroll::-webkit-scrollbar {

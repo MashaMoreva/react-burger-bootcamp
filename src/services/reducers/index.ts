@@ -9,6 +9,7 @@ import { forgotPasswordReducer } from './forgot-password';
 import { resetPasswordReducer } from './reset-password';
 import { userAuthorizationReducer } from './authorization';
 import { profileReducer } from './user';
+import { wsReducer } from './websockets';
 
 export const rootReducer = combineReducers({
     burgerIngredients: burgerIngredientsReducer,
@@ -21,4 +22,5 @@ export const rootReducer = combineReducers({
     resetPassword: resetPasswordReducer,
     userAuthorization: userAuthorizationReducer,
     profile: profileReducer,
+    webSocket: wsReducer
   })

@@ -10,12 +10,16 @@ import { TOrder } from "../types/types";
 
 type TInitialState = {
     wsConnection: boolean,
-    orders: Array<TOrder> | []
+    orders: Array<TOrder> | [],
+    total: null | number,
+    totalToday: null | number
 }
 
 export const initialState: TInitialState = {
     wsConnection: false,
-    orders: []
+    orders: [],
+    total: null,
+    totalToday: null
 }
 
 export const wsReducer = (state = initialState, action: TUnionWsAction): TInitialState => {
@@ -35,18 +39,18 @@ export const wsReducer = (state = initialState, action: TUnionWsAction): TInitia
         case WS_CONNECTION_CLOSED: {
             return {
                 ...state,
-                wsConnection: false
+                wsConnection: false,
+                orders: [],
+                total: null,
+                totalToday: null
             };
         }
         case WS_GET_ORDERS: {
             return {
                 ...state,
-                orders: action.payload.orders
-                //   state.orders.length < 10
-                //     ? [...state.orders, ...action.payload.orders]
-                //     : [...state.orders],
-                //     total: action.payload.total,
-                //     totalToday: action.payload.totalToday
+                orders: action.payload.orders,
+                total: action.payload.total,
+                totalToday: action.payload.totalToday
 
             };
         }

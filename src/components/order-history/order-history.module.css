@@ -8,12 +8,14 @@
 }
 
 .scroll {
-    margin-top: 44px;
+    margin: 44px 0 0 0;
+    padding: 0 8px 0 0;
     display: grid;
     gap: 16px;
     grid-auto-rows: max-content;
     height: 664px;
     overflow-y: auto;
+    list-style-type: none;
 }
 
 .scroll::-webkit-scrollbar {

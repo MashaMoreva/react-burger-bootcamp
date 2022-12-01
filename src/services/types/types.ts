@@ -27,12 +27,12 @@ export type TIngredientType = {
 }
 
 export type TIngredientDetails = {
-    image_large?: string,
-    name?: string,
-    calories?: number,
-    proteins?: number,
-    fat?: number,
-    carbohydrates?: number
+  image_large?: string,
+  name?: string,
+  calories?: number,
+  proteins?: number,
+  fat?: number,
+  carbohydrates?: number
 }
 
 export type TUser = {
@@ -109,4 +109,15 @@ export type TOrders = {
   orders: Array<TOrder>,
   total: number,
   totalToday: number
+}
+
+export type TOrderProps = {
+  order: TOrder
+}
+
+export type TOptionsDateFormat = {
+  timezone: 'Moscow',
+  hour: 'numeric',
+  minute: 'numeric',
+  timeZoneName: "short",
 }

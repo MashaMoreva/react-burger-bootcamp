@@ -20,8 +20,9 @@ export const Authorization = () => {
     }
 
     if (authorization) {
+        const searchParams = new URLSearchParams(window.location.search)
         return (
-            <Redirect to={'/profile'} />
+            <Redirect to={searchParams.get('retpath') ||  '/profile'} />
         )
     }
 

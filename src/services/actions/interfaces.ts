@@ -137,6 +137,12 @@ export type TUnionAction =
     | IGetBurgerIngredientsSuccess
     | IGetUserSuccess
     | IUpdateUserSuccess
+    | IWsConnectionStart
+    | IWsConnectionStartUser
+    | IWsConnectionSuccess
+    | IWsConnectionError
+    | IWsConnectionClosed
+    | IWsGetOrders
 
 export interface IWsConnectionStart {
     readonly type: typeof WS_CONNECTION_START

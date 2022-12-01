@@ -1,18 +1,19 @@
-import { useSelector } from '../services/hooks';
+import { useEffect } from "react";
+import { useDispatch } from '../services/hooks';
 import styles from './pages.module.css';
-import { Redirect } from 'react-router-dom';
 import { OrderFeed } from '../components/order-feed/order-feed';
 import { Orders } from '../components/orders/orders';
+import { wsConnectionStart, wsConnectionClosed } from '../services/actions/websockets';
 
 export const Feed = () => {
+    const dispatch = useDispatch();
 
-    const authorization = useSelector((state) => state.userAuthorization.authorization);
-
-    if (!authorization) {
-        return (
-            <Redirect to={'/login'} />
-        )
-    }
+    useEffect(() => {
+        dispatch(wsConnectionStart());
+        return () => {
+            dispatch(wsConnectionClosed());
+        };
+    }, []);
 
     return (
         <section className={styles.content}>

@@ -21,14 +21,16 @@ export function BurgerConstructor() {
 
     const main = useSelector(state => state.burgerConstructor.mainList)
     const buns = useSelector(state => state.burgerConstructor.bunsList)
-    const ingredients = useSelector(state => state.burgerIngredients.burgerIngredients);
-    const idIngredientsList = (ingredients.map((item) => item._id))
+    const idMainList = (main.map((item) => item._id))
+    const idBunsList = (buns.map((item) => item._id))
+    const idIngredientsList = idMainList.concat(idBunsList)
+
     const authorization = useSelector((state) => state.userAuthorization.authorization);
 
     const [openModal, setOpenModal] = React.useState(false);
     const handleOrderClick = () => {
         if (!authorization) {
-            history.replace('/login')
+            history.replace('/login?retpath=/')
         } else {
             setOpenModal(!openModal)
             dispatch(getOrderDetails(idIngredientsList))

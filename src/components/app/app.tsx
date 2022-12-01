@@ -5,7 +5,7 @@ import { Modal } from '../modal/modal';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
 import { getBurgerIngredients } from '../../services/actions/burger-ingredients';
 import { deleteIgredientDetails } from '../../services/actions/ingredient-details';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, useHistory} from 'react-router-dom';
 import { Registration } from '../../pages/registration';
 import { Authorization } from '../../pages/authorization';
 import { ForgotPassword } from '../../pages/forgot-password';
@@ -21,6 +21,7 @@ export function App() {
 
   const dispatch = useDispatch();
   const location = useLocation<TLocation>();
+  const history = useHistory();
   const background = location.state && location.state.background;
 
   React.useEffect(() => {
@@ -28,11 +29,11 @@ export function App() {
   }, [dispatch])
 
   
-  const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
+  // const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
   const closeIngredientsModal = useCallback(() => {
-    dispatch(deleteIgredientDetails())
-    window.history.pushState(null, '', '/')
-  }, [dispatch])
+    // dispatch(deleteIgredientDetails())
+    history.push('/')
+  }, [])
 
 
   return (
@@ -49,17 +50,17 @@ export function App() {
         <Route path="/ingredients/:id" >
           <IngredientInfo />
         </Route>
-        <ProtectedRoute path="/feed" component={Feed} />
+        <Route path="/feed" component={Feed} />
       </Switch>
 
       {background && (
         <>
           <Route path="/ingredients/:id" >
-            {openIngredientDetailsModal && (
+            {/* {openIngredientDetailsModal && ( */}
               <Modal onClose={closeIngredientsModal}>
                 <IngredientDetails />
               </Modal>
-            )}
+            {/* )} */}
           </Route>
         </>
       )}

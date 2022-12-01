@@ -1,10 +1,22 @@
+import { useEffect } from "react";
+import { useDispatch } from "../services/hooks";
 import styles from './pages.module.css';
 import { Route } from 'react-router-dom';
 import { ProfileMenu } from '../components/profile-menu/profile-menu';
 import { UpdateProfileForm } from '../components/update-profile-form/update-profile-form';
 import { OrderHistory } from '../components/order-history/order-history';
+import { wsConnectionStartUser, wsConnectionClosed } from '../services/actions/websockets';
 
 export function Profile() {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(wsConnectionStartUser());
+      return () => {
+        dispatch(wsConnectionClosed());
+      };
+    }, []);
 
     return (
         <section className={styles.profile}>

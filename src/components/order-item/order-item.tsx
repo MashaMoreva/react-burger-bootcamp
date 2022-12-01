@@ -1,36 +1,56 @@
+import { FC } from 'react';
+import { useSelector } from '../../services/hooks';
 import styles from './order-item.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { dateWhen, dateFormat } from '../../utils/date';
+import { TOrderProps } from '../../services/types/types';
 
-export function OrderItem() {
+export const OrderItem: FC<TOrderProps> = ({ order }) => {
+
+    const location = useLocation();
+
+    const ingredients = useSelector((store) => store.burgerIngredients.burgerIngredients);
+    const orderIngredients = ingredients.filter((ingredient) => order.ingredients.includes(ingredient._id))
+
+    const totalOrderPrice = orderIngredients.reduce(
+        (acc, ingredient) => acc + ingredient.price,
+        0
+    );
+
+    console.log(orderIngredients)
+
+    const when = dateWhen(new Date(order.createdAt))
+
     return (
         <article className={`${styles.item} pt-6 pr-6 pb-6 pl-6`}>
-            {/* <Link to={{
-                pathname: `/feed/:${number}`,
+            <Link to={{
+                pathname: `/feed/:${order.number}`,
                 state: { background: location },
             }}
-                className={styles.link}> */}
-            <div className={styles.order}>
-                <p className="text text_type_digits-default">#034535</p>
-                <p className="text text_type_main-default text_color_inactive">
-                    Сегодня, 16:20 i-GMT+3
-                </p>
-            </div>
-            <p className="text text_type_main-medium">Death Star Starship Main бургер</p>
-            <div className={styles.order_info}>
-                <ul className={styles.list}>
-                    <li className={styles.list_item}><img className={styles.list_image} src="https://code.s3.yandex.net/react/code/bun-01.png" alt="" /></li>
-                    <li className={styles.list_item}><img className={styles.list_image} src="https://code.s3.yandex.net/react/code/bun-01.png" alt="" /></li>
-                    <li className={styles.list_item}><img className={styles.list_image} src="https://code.s3.yandex.net/react/code/bun-01.png" alt="" /></li>
-                    <li className={styles.list_item}><img className={styles.list_image} src="https://code.s3.yandex.net/react/code/bun-01.png" alt="" /></li>
-                    <li className={styles.list_item}><img className={styles.list_image} src="https://code.s3.yandex.net/react/code/bun-01.png" alt="" /></li>
-                </ul>
-                <div className={`${styles.price} mt-1 mb-2`}>
-                    <p className="text text_type_digits-default">480</p>
-                    <CurrencyIcon type="primary" />
+                className={styles.link}>
+                <div className={styles.order}>
+                    <p className="text text_type_digits-default">{order.number}</p>
+                    <p className="text text_type_main-default text_color_inactive">
+                        {`${when}, ${dateFormat(order.createdAt)}`}
+                    </p>
                 </div>
-            </div>
-            {/* </Link> */}
+                <p className={`${styles.text} text text_type_main-medium`}>{order.name}</p>
+                <div className={styles.order_info}>
+                    <ul className={styles.list}>
+                        {orderIngredients
+                            .slice(0, 6)
+                            .map((item) =>
+                                <li className={styles.list_item} key={item._id}>
+                                    <img className={styles.list_image} src={item.image_mobile} alt={item.name} /></li>
+                            )}
+                    </ul>
+                    <div className={`${styles.price} mt-1 mb-2`}>
+                        <p className="text text_type_digits-default">{totalOrderPrice}</p>
+                        <CurrencyIcon type="primary" />
+                    </div>
+                </div>
+            </Link>
         </article >
     )
 }

@@ -22,10 +22,15 @@
     margin: 0;
     display: grid;
     gap: 8px;
-    grid-auto-rows: 24px;
+    grid-template-rows: repeat(10, 24px);
+    grid-auto-flow: column;
     justify-content: start;
 }
 
 .counter {
     text-shadow: 0 0 30px #4c4cff; 
+}
+
+.done {
+    color: #00CCCC;
 }
