@@ -21,7 +21,6 @@ export const BurgerIngredientsItem: FC<TBurgerIngredientsItem> = ({ ingredient }
     const dispatch = useDispatch();
     const handleIngredientClick = () => {
         dispatch(addIgredientDetails(ingredient))
-        sessionStorage.setItem('ingredient', JSON.stringify(ingredient))
     }
 
     const [, dragIngredient] = useDrag(() => ({
@@ -38,7 +37,7 @@ export const BurgerIngredientsItem: FC<TBurgerIngredientsItem> = ({ ingredient }
         <article className={styles.item} onClick={handleIngredientClick} ref={dragIngredient}>
             <Link to={{
                 pathname: `/ingredients/${ingredient._id}`,
-                state: { background: location },
+                state: { background: location }
             }}
                 className={styles.link}>
                 {counter > 0 ? <Counter count={counter} size="default" /> : null}

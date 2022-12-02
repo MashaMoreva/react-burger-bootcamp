@@ -7,7 +7,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 export const Registration = () => {
 
-    const authorization = useSelector((state) => state.userAuthorization.authorization);
+    const success = useSelector((state) => state.registration.success);
 
     const dispatch = useDispatch();
     const [value, setValue] = React.useState({
@@ -15,22 +15,22 @@ export const Registration = () => {
         email: '',
         password: ''
     })
-    
+
     const handleRegistration: FormEventHandler<HTMLFormElement> = (evt) => {
         evt.preventDefault();
         dispatch(userRegistration(value.name, value.email, value.password));
-      }
+    }
     const inputRef = React.useRef<HTMLInputElement>(null)
     const onIconClick = () => {
         setTimeout(() => inputRef.current?.focus(), 0)
         alert('Icon Click Callback')
     }
 
-    if (authorization) {
-        return (
-            <Redirect to={'/profile'} />
-        )
-    }
+    // if (success) {
+    //     return (
+    //         <Redirect to={'/login'} />
+    //     )
+    // }
 
     return (
         <form className={styles.default} onSubmit={handleRegistration}>
@@ -66,6 +66,7 @@ export const Registration = () => {
                 <p className="text text_type_main-default text_color_inactive">Уже зарегистрированы?</p>
                 <Link to='/login' className={`${styles.link} text text_type_main-default`}>Войти</Link>
             </div>
+            {success ? <Redirect to={'/login'} /> : <Redirect to={'/register'} />}
         </form>
     )
 }

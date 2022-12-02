@@ -11,14 +11,12 @@ export const OrderItem: FC<TOrderProps> = ({ order }) => {
     const location = useLocation();
 
     const ingredients = useSelector((store) => store.burgerIngredients.burgerIngredients);
-    const orderIngredients = ingredients.filter((ingredient) => order.ingredients.includes(ingredient._id))
+    const orderIngredientsForTotal = ingredients.filter((ingredient) => order.ingredients.includes(ingredient._id))
 
-    const totalOrderPrice = orderIngredients.reduce(
+    const totalOrderPrice = orderIngredientsForTotal.reduce(
         (acc, ingredient) => acc + ingredient.price,
         0
     );
-
-    console.log(orderIngredients)
 
     const when = dateWhen(new Date(order.createdAt))
 
@@ -38,7 +36,7 @@ export const OrderItem: FC<TOrderProps> = ({ order }) => {
                 <p className={`${styles.text} text text_type_main-medium`}>{order.name}</p>
                 <div className={styles.order_info}>
                     <ul className={styles.list}>
-                        {orderIngredients
+                        {orderIngredientsForTotal
                             .slice(0, 6)
                             .map((item) =>
                                 <li className={styles.list_item} key={item._id}>

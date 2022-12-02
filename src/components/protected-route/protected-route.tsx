@@ -21,7 +21,19 @@ export const ProtectedRoute = ({ component, path }: RouteProps) => {
 //     render={() =>
 //       authorization ? (
 //         children
-//       ) : (<Redirect to='/login' />)
+//       ) : (<Redirect to={`/login?retpath=${path}`} />)
 //     }
 //   />
 // );
+
+
+//   return (
+//     <Route>
+//       {login ? (
+//         children
+//       ) : (<Redirect to={{ pathname: '/login', state: { from: location } }} />)
+//       || (<Redirect to={{ pathname: '/profile', state: { from: location } }} />)
+//       }
+//     </Route>
+//   );
+// }

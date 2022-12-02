@@ -1,4 +1,4 @@
-import { getCookie } from "./сookies";
+import { setCookie, deleteCookie, getCookie } from "./сookies";
 
 interface IApiConfig {
   baseUrl: string,
@@ -99,6 +99,15 @@ class Api {
   ) {
     return fetch(url, options)
       .then(this._handleResponse)
+      .catch((error) => {
+        console.log(error)
+        deleteCookie('access');
+        this.refresh()
+          .then(
+            ({ accessToken }) => setCookie('access', accessToken),
+            () => this._request(url, options)
+          )
+      })
   }
 
   // получатель ингредиентов
@@ -239,3 +248,6 @@ class Api {
 }
 
 export const apiBurger = new Api(config);
+
+
+
