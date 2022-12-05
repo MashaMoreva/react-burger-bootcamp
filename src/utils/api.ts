@@ -100,11 +100,12 @@ class Api {
     return fetch(url, options)
       .then(this._handleResponse)
       .catch((error) => {
-        console.log(error)
+        if (error === '403')
+          console.log(error)
         deleteCookie('access');
         this.refresh()
           .then(
-            ({ accessToken }) => setCookie('access', accessToken),
+            ({ accessToken }) => setCookie('access', accessToken.split('Bearer ')[1]),
             () => this._request(url, options)
           )
       })

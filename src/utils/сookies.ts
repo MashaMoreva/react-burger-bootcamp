@@ -34,6 +34,6 @@ export function getCookie(name: string): string | undefined {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-export function deleteCookie(name: string) {
-  setCookie(name, '')
+export const deleteCookie = (name: string) => {
+  setCookie(name, '', { expires: -1 });
 }

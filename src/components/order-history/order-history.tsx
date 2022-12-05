@@ -6,7 +6,7 @@ import { TOrderProps } from '../../services/types/types';
 
 export const OrderHistory: FC<TOrderProps> = ({ order }) => {
 
-    const orders = useSelector(state => state.webSocket.orders)
+    const orders = useSelector(state => state.webSocketUser.orders)
 
     return (
         <section>

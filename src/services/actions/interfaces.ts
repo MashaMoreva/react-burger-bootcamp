@@ -18,11 +18,15 @@ import {
     GET_USER_SUCCESS,
     UPDATE_USER_SUCCESS,
     WS_CONNECTION_START,
-    WS_CONNECTION_START_USER,
     WS_CONNECTION_SUCCESS,
     WS_CONNECTION_ERROR,
     WS_CONNECTION_CLOSED,
-    WS_GET_ORDERS
+    WS_GET_ORDERS,
+    WS_CONNECTION_START_USER,
+    WS_CONNECTION_SUCCESS_USER,
+    WS_CONNECTION_ERROR_USER,
+    WS_CONNECTION_CLOSED_USER,
+    WS_GET_ORDERS_USER
 } from "../constants/constants"
 import { TIngredientType, TUser, TOrders } from "../types/types"
 
@@ -117,6 +121,48 @@ export interface IUpdateUserSuccess {
     readonly payload: TUser
 }
 
+export interface IWsConnectionStart {
+    readonly type: typeof WS_CONNECTION_START
+}
+
+export interface IWsConnectionSuccess {
+    readonly type: typeof WS_CONNECTION_SUCCESS
+}
+
+export interface IWsConnectionError {
+    readonly type: typeof WS_CONNECTION_ERROR
+}
+
+export interface IWsConnectionClosed {
+    readonly type: typeof WS_CONNECTION_CLOSED
+}
+
+export interface IWsGetOrders {
+    readonly type: typeof WS_GET_ORDERS,
+    readonly payload: TOrders
+}
+
+export interface IWsConnectionStartUser {
+    readonly type: typeof WS_CONNECTION_START_USER
+}
+
+export interface IWsConnectionSuccessUser {
+    readonly type: typeof WS_CONNECTION_SUCCESS_USER
+}
+
+export interface IWsConnectionErrorUser {
+    readonly type: typeof WS_CONNECTION_ERROR_USER
+}
+
+export interface IWsConnectionClosedUser {
+    readonly type: typeof WS_CONNECTION_CLOSED_USER
+}
+
+export interface IWsGetOrdersUser {
+    readonly type: typeof WS_GET_ORDERS_USER,
+    readonly payload: TOrders
+}
+
 export type TUnionAction =
     | IUserAuthorizationSuccess
     | ISetBun
@@ -138,50 +184,34 @@ export type TUnionAction =
     | IGetUserSuccess
     | IUpdateUserSuccess
     | IWsConnectionStart
-    | IWsConnectionStartUser
     | IWsConnectionSuccess
     | IWsConnectionError
     | IWsConnectionClosed
     | IWsGetOrders
-
-export interface IWsConnectionStart {
-    readonly type: typeof WS_CONNECTION_START
-}
-
-export interface IWsConnectionStartUser {
-    readonly type: typeof WS_CONNECTION_START_USER
-}
-
-export interface IWsConnectionSuccess {
-    readonly type: typeof WS_CONNECTION_SUCCESS
-}
-
-export interface IWsConnectionError {
-    readonly type: typeof WS_CONNECTION_ERROR
-}
-
-export interface IWsConnectionClosed {
-    readonly type: typeof WS_CONNECTION_CLOSED
-}
-
-export interface IWsGetOrders {
-    readonly type: typeof WS_GET_ORDERS,
-    readonly payload: TOrders
-}
+    | IWsConnectionStartUser
+    | IWsConnectionSuccessUser
+    | IWsConnectionErrorUser
+    | IWsConnectionClosedUser
+    | IWsGetOrdersUser
 
 export type TUnionWsAction =
     | IWsConnectionStart
-    | IWsConnectionStartUser
     | IWsConnectionSuccess
     | IWsConnectionError
     | IWsConnectionClosed
     | IWsGetOrders
 
+export type TUnionWsActionUser =
+    | IWsConnectionStartUser
+    | IWsConnectionSuccessUser
+    | IWsConnectionErrorUser
+    | IWsConnectionClosedUser
+    | IWsGetOrdersUser
+
 export interface IWsActions {
-    readonly wsInit: typeof WS_CONNECTION_START;
-    readonly wsUser: typeof WS_CONNECTION_START_USER;
-    readonly onOpen: typeof WS_CONNECTION_SUCCESS;
-    readonly onClose: typeof WS_CONNECTION_CLOSED;
-    readonly onError: typeof WS_CONNECTION_ERROR;
-    readonly onOrders: typeof WS_GET_ORDERS;
+    readonly wsInit: string;
+    readonly onOpen: string;
+    readonly onClose: string;
+    readonly onError: string;
+    readonly onOrders: string;
 }

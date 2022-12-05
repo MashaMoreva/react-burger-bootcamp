@@ -6,13 +6,20 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 import { dateWhen, dateFormat } from '../../utils/date';
 import { TOrderProps } from '../../services/types/types';
 
+function inNotUndefined<T>(item: T | undefined): item is T {
+    return item !== undefined
+}
+
 export const OrderItem: FC<TOrderProps> = ({ order }) => {
 
     const location = useLocation();
 
     const ingredients = useSelector((store) => store.burgerIngredients.burgerIngredients);
-    const orderIngredientsForTotal = ingredients.filter((ingredient) => order.ingredients.includes(ingredient._id))
-
+    const orderIngredientsForImage = ingredients.filter((ingredient) => order.ingredients.includes(ingredient._id))
+    const orderIngredientsForTotal =
+        order.ingredients.map(id => {
+            return ingredients.find(item => item._id === id);
+        }).filter(inNotUndefined);
     const totalOrderPrice = orderIngredientsForTotal.reduce(
         (acc, ingredient) => acc + ingredient.price,
         0
@@ -36,7 +43,7 @@ export const OrderItem: FC<TOrderProps> = ({ order }) => {
                 <p className={`${styles.text} text text_type_main-medium`}>{order.name}</p>
                 <div className={styles.order_info}>
                     <ul className={styles.list}>
-                        {orderIngredientsForTotal
+                        {orderIngredientsForImage
                             .slice(0, 6)
                             .map((item) =>
                                 <li className={styles.list_item} key={item._id}>
