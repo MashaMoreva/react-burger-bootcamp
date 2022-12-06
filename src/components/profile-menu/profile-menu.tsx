@@ -1,14 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from '../../services/hooks';
 import styles from './profile-menu.module.css';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, useHistory, Redirect, useLocation } from 'react-router-dom';
 import { userLogout } from '../../services/actions/logout';
 
 
 export function ProfileMenu() {
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    const location = useLocation();
+    // const history = useHistory();
     const authorization = useSelector((state) => state.userAuthorization.authorization);
 
     const handleLogout = React.useCallback(() => {
@@ -51,9 +52,11 @@ export function ProfileMenu() {
                 </button>
             </nav>
             <span className="text text_type_main-default text_color_inactive mt-20">В этом разделе вы можете</span>
-            <span className="text text_type_main-default text_color_inactive">изменить свои персональные данные</span>
+            {location.pathname === '/profile' ?
+                <span className="text text_type_main-default text_color_inactive">изменить свои персональные данные</span>
+                : <span className="text text_type_main-default text_color_inactive">просмотреть свою историю заказов</span>
+            }
         </section>
     )
 }
-
 

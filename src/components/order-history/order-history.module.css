@@ -10,7 +10,8 @@
 .scroll {
     margin: 44px 0 0 0;
     padding: 0 8px 0 0;
-    display: grid;
+    display: flex;
+    flex-direction: column-reverse;
     gap: 16px;
     grid-auto-rows: max-content;
     height: 664px;

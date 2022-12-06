@@ -1,4 +1,5 @@
 import {
+    WS_CONNECTION_START,
     WS_CONNECTION_SUCCESS,
     WS_CONNECTION_ERROR,
     WS_CONNECTION_CLOSED,
@@ -12,6 +13,7 @@ import { TUnionWsAction, TUnionWsActionUser } from "../actions/interfaces";
 import { TOrder } from "../types/types";
 
 type TInitialState = {
+    wsStart: boolean,
     wsConnection: boolean,
     orders: Array<TOrder> | [],
     total: null | number,
@@ -19,6 +21,7 @@ type TInitialState = {
 }
 
 export const initialState: TInitialState = {
+    wsStart: false,
     wsConnection: false,
     orders: [],
     total: null,
@@ -38,6 +41,12 @@ export const initialStateUser: TInitialStateUser = {
 
 export const wsReducer = (state = initialState, action: TUnionWsAction): TInitialState => {
     switch (action.type) {
+        case WS_CONNECTION_START: {
+            return {
+              ...state,
+              wsStart: true
+            }
+          }
         case WS_CONNECTION_SUCCESS: {
             return {
                 ...state,

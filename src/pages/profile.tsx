@@ -14,7 +14,7 @@ export const Profile = () => {
     useEffect(() => {
       dispatch(wsConnectionStartUser());
       return () => {
-        dispatch(wsConnectionClosedUser());
+        // dispatch(wsConnectionClosedUser());
       };
     }, []);
 

@@ -209,9 +209,9 @@ export type TUnionWsActionUser =
     | IWsGetOrdersUser
 
 export interface IWsActions {
-    readonly wsInit: string;
-    readonly onOpen: string;
-    readonly onClose: string;
-    readonly onError: string;
-    readonly onOrders: string;
+    readonly wsInit: string
+    readonly onOpen: string
+    readonly onClose: string
+    readonly onError: string
+    readonly onOrders: string
 }
