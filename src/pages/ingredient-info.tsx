@@ -4,7 +4,7 @@ import { IngredientDetails } from '../components/ingredient-details/ingredient-d
 export const IngredientInfo = () => {
 
     return (
-        <div className={styles.ingredient_info}>
+        <div className={styles.info}>
             <IngredientDetails />
         </div>
     )

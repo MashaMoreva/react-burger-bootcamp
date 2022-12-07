@@ -38,7 +38,7 @@
     margin-top: 120px;
 }
 
-.ingredient_info {
+.info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@
     margin: 0 auto;
 }
 
-.ingredient_info h2 {
+.info h2 {
     margin-top: 120px;
     margin-left: 0;
 }

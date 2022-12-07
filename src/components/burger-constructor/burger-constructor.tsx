@@ -25,6 +25,8 @@ export function BurgerConstructor() {
     const idBunsList = (buns.map((item) => item._id))
     const idIngredientsList = idMainList.concat(idBunsList)
 
+    console.log(idIngredientsList)
+
     const authorization = useSelector((state) => state.userAuthorization.authorization);
 
     const [openModal, setOpenModal] = React.useState(false);

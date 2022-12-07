@@ -1,14 +1,28 @@
 import React from 'react';
+import { useDispatch } from '../../services/hooks';
+import { useEffect } from 'react';
+import { wsConnectionStart, wsConnectionClosed } from '../../services/actions/websockets';
 import styles from './order.module.css'
 import { useSelector } from '../../services/hooks';
 import { useParams } from 'react-router-dom';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { dateWhen, dateFormat } from '../../utils/date';
 
+
 function inNotUndefined<T>(item: T | undefined): item is T {
     return item !== undefined
 }
 export const Order = () => {
+
+    // const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     dispatch(wsConnectionStart());
+    //     return () => {
+    //         dispatch(wsConnectionClosed());
+    //     };
+    // }, []);
+
 
     const ingredients = useSelector((store) => store.burgerIngredients.burgerIngredients);
     const orders = useSelector((store) => store.webSocket.orders);

@@ -82,7 +82,7 @@ export type TBurgerIngredientsSet = {
 }
 
 export type TModal = {
-  onClose: () => void,
+  onClose?: () => void,
   children: ReactNode
 }
 

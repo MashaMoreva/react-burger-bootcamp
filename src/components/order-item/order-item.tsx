@@ -4,7 +4,7 @@ import styles from './order-item.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { dateWhen, dateFormat } from '../../utils/date';
-import { TOrderProps } from '../../services/types/types';
+import { TOrderProps } from '../../services/types/types'; 
 
 function inNotUndefined<T>(item: T | undefined): item is T {
     return item !== undefined

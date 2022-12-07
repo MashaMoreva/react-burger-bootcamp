@@ -9,20 +9,20 @@ import { wsConnectionStartUser, wsConnectionClosedUser } from '../services/actio
 
 export const Profile = () => {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(wsConnectionStartUser());
-      return () => {
-        // dispatch(wsConnectionClosedUser());
-      };
-    }, []);
+  useEffect(() => {
+    dispatch(wsConnectionStartUser());
+    return () => {
+      dispatch(wsConnectionClosedUser());
+    };
+  }, []);
 
-    return (
-        <section className={styles.profile}>
-            <ProfileMenu />
-            <Route exact={true} path="/profile" component={UpdateProfileForm} />
-            <Route exact={true} path="/profile/orders" component={OrderHistory} />
-        </section>
-    )
+  return (
+    <section className={styles.profile}>
+      <ProfileMenu />
+      <Route exact={true} path="/profile" component={UpdateProfileForm} />
+      <Route exact={true} path="/profile/orders" component={OrderHistory} />
+    </section>
+  )
 }

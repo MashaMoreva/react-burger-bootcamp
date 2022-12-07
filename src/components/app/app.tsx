@@ -18,6 +18,7 @@ import { Feed } from '../../pages/feed';
 import { TLocation } from '../../services/types/types';
 import { Order } from '../order/order';
 import { OrderInfo } from '../../pages/order-info';
+import { ProfileOrderInfo } from '../../pages/profile-order-info';
 
 export function App() {
 
@@ -32,10 +33,14 @@ export function App() {
 
 
   // const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
-  const closeModal = useCallback(() => {
-    // dispatch(deleteIgredientDetails())
-    history.push('/')
-  }, [])
+  // const closeIngredientModal = useCallback(() => {
+  //   // dispatch(deleteIgredientDetails())
+  //   history.push('/')
+  //   // history.push({
+  //   //   ...location.state.background,
+  //   //   state: { background: null },
+  //   // });
+  // }, [])
 
 
   return (
@@ -43,40 +48,36 @@ export function App() {
       <AppHeader />
 
       <Switch location={background || location}>
-        <Route exact={true} path="/" component={Main} />
-        <Route path="/register" component={Registration} />
-        <Route path="/login" component={Authorization} />
-        <Route path="/forgot-password" component={ForgotPassword} />
-        <Route path="/reset-password" component={ResetPassword} />
+        <Route exact path="/" component={Main} />
+        <Route exact path="/ingredients/:id" component={IngredientInfo} />
+        <Route exact path="/register" component={Registration} />
+        <Route exact path="/login" component={Authorization} />
+        <Route exact path="/forgot-password" component={ForgotPassword} />
+        <Route exact path="/reset-password" component={ResetPassword} />
+        <Route exact path="/feed" component={Feed} />
+        <Route exact path="/feed/:id" component={OrderInfo} />
         <ProtectedRoute path="/profile" component={Profile} />
         <ProtectedRoute path="/profile/orders" component={Profile} />
-        <ProtectedRoute path="/profile/orders/:id" component={Order} />
-        <Route path="/ingredients/:id" >
-          <IngredientInfo />
-        </Route>
-        <Route path="/feed" component={Feed} />
-        <Route path="/feed/:id" >
-          <OrderInfo />
-        </Route>
+        <ProtectedRoute path="/profile/orders/:id" component={ProfileOrderInfo} />
       </Switch>
 
       {background && (
         <>
           <Route path="/ingredients/:id" >
-            <Modal onClose={closeModal}>
+            <Modal>
               <IngredientDetails />
             </Modal>
           </Route>
           <Route path="/feed/:id">
+            <Modal>
+              <Order />
+            </Modal>
+          </Route>
+          {/* <Route exact path="/profile/orders/:id">
             <Modal onClose={closeModal}>
               <Order />
             </Modal>
-          </Route>
-          <Route exact path="/profile/orders/:id">
-          <Modal onClose={closeModal}>
-              <Order />
-            </Modal>
-          </Route>
+          </Route> */}
         </>
       )}
     </>

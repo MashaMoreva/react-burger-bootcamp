@@ -11,7 +11,7 @@ export const Feed = () => {
     useEffect(() => {
         dispatch(wsConnectionStart());
         return () => {
-        //     dispatch(wsConnectionClosed());
+            dispatch(wsConnectionClosed());
         };
     }, []);
 
