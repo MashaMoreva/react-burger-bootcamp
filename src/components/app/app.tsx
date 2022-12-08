@@ -1,11 +1,10 @@
-import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from '../../services/hooks';
+import React from 'react';
+import { useDispatch } from '../../services/hooks';
 import { AppHeader } from '../app-header/app-header';
 import { Modal } from '../modal/modal';
 import { IngredientDetails } from '../ingredient-details/ingredient-details';
 import { getBurgerIngredients } from '../../services/actions/burger-ingredients';
-import { deleteIgredientDetails } from '../../services/actions/ingredient-details';
-import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { Registration } from '../../pages/registration';
 import { Authorization } from '../../pages/authorization';
 import { ForgotPassword } from '../../pages/forgot-password';
@@ -18,30 +17,18 @@ import { Feed } from '../../pages/feed';
 import { TLocation } from '../../services/types/types';
 import { Order } from '../order/order';
 import { OrderInfo } from '../../pages/order-info';
+import { OrderUser } from '../order-user/order-user';
 import { ProfileOrderInfo } from '../../pages/profile-order-info';
 
 export function App() {
 
   const dispatch = useDispatch();
   const location = useLocation<TLocation>();
-  const history = useHistory();
   const background = location.state && location.state.background;
 
   React.useEffect(() => {
     dispatch(getBurgerIngredients())
   }, [dispatch])
-
-
-  // const openIngredientDetailsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
-  // const closeIngredientModal = useCallback(() => {
-  //   // dispatch(deleteIgredientDetails())
-  //   history.push('/')
-  //   // history.push({
-  //   //   ...location.state.background,
-  //   //   state: { background: null },
-  //   // });
-  // }, [])
-
 
   return (
     <>
@@ -56,8 +43,8 @@ export function App() {
         <Route exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/feed" component={Feed} />
         <Route exact path="/feed/:id" component={OrderInfo} />
-        <ProtectedRoute path="/profile" component={Profile} />
-        <ProtectedRoute path="/profile/orders" component={Profile} />
+        <ProtectedRoute exact path="/profile" component={Profile} />
+        <ProtectedRoute exact path="/profile/orders" component={Profile} />
         <ProtectedRoute path="/profile/orders/:id" component={ProfileOrderInfo} />
       </Switch>
 
@@ -73,11 +60,11 @@ export function App() {
               <Order />
             </Modal>
           </Route>
-          {/* <Route exact path="/profile/orders/:id">
-            <Modal onClose={closeModal}>
-              <Order />
+          <Route exact path="/profile/orders/:id">
+            <Modal>
+              <OrderUser />
             </Modal>
-          </Route> */}
+          </Route>
         </>
       )}
     </>

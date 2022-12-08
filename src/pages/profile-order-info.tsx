@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styles from './pages.module.css';
 import { useDispatch } from '../services/hooks';
 import { wsConnectionStartUser, wsConnectionClosedUser } from '../services/actions/websockets';
-import { Order } from '../components/order/order';
+import { OrderUser } from "../components/order-user/order-user";
 
 export const ProfileOrderInfo = () => {
 
@@ -17,7 +17,7 @@ export const ProfileOrderInfo = () => {
 
     return (
         <div className={styles.info}>
-            <Order />
+            <OrderUser />
         </div>
     )
 }

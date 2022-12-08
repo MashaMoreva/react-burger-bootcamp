@@ -4,12 +4,12 @@ import { OrderItem } from '../order-item/order-item';
 
 export function OrderHistory() {
 
-    const orders = useSelector(state => state.webSocketUser.orders)
+    const orders = useSelector(state => [...state.webSocketUser.orders].reverse())
 
     return (
         <section>
             <ul className={`${styles.scroll} `}>
-                {orders.reverse()
+                {orders
                     .map((order) =>
                         <li key={order._id}>
                             <OrderItem order={order} />

@@ -23,7 +23,7 @@ export function BurgerConstructor() {
     const buns = useSelector(state => state.burgerConstructor.bunsList)
     const idMainList = (main.map((item) => item._id))
     const idBunsList = (buns.map((item) => item._id))
-    const idIngredientsList = idMainList.concat(idBunsList)
+    const idIngredientsList = idMainList.concat(idBunsList).concat(idBunsList)
 
     console.log(idIngredientsList)
 

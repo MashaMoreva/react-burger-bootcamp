@@ -1,18 +1,17 @@
 import React from 'react';
-import styles from './order.module.css'
+import styles from './order-user.module.css'
 import { useSelector } from '../../services/hooks';
 import { useParams } from 'react-router-dom';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { dateWhen, dateFormat } from '../../utils/date';
 
-
 function inNotUndefined<T>(item: T | undefined): item is T {
     return item !== undefined
 }
-export const Order = () => {
+export const OrderUser = () => {
 
     const ingredients = useSelector((store) => store.burgerIngredients.burgerIngredients);
-    const orders = useSelector((store) => store.webSocket.orders);
+    const orders = useSelector((store) => store.webSocketUser.orders);
     const { id } = useParams<{ id: string }>();
     const order = React.useMemo(() => {
         return orders.find(order => order._id === id)

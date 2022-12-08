@@ -29,8 +29,9 @@ export const OrderItem: FC<TOrderProps> = ({ order }) => {
 
     return (
         <article className={`${styles.item} pt-6 pr-6 pb-6 pl-6`}>
-            <Link to={{
-                pathname: `/feed/${order._id}`,
+           
+            <Link to={{  
+                pathname: location.pathname === '/feed'  ? `/feed/${order._id}` : `/profile/orders/${order._id}`, 
                 state: { background: location },
             }}
                 className={styles.link}>

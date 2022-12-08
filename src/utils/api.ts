@@ -104,10 +104,10 @@ class Api {
           console.log(error)
         deleteCookie('access');
         this.refresh()
-          .then(
-            ({ accessToken }) => setCookie('access', accessToken.split('Bearer ')[1]),
-            () => this._request(url, options)
-          )
+          .then(({ accessToken }) => {
+            setCookie('access', accessToken.split('Bearer ')[1])
+          })
+            .then(() => this._request(url, options))
       })
   }
 
