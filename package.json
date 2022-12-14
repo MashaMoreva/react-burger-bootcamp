@@ -36,7 +36,7 @@
     "cypress": "cypress open cache clear",
     "test:cypress": "cypress run"
   },
-  "homepage": "./",
+  "homepage": "https://mashamoreva.github.io/react-burger/",
   "eslintConfig": {
     "extends": [
       "react-app",
