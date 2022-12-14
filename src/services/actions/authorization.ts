@@ -4,7 +4,7 @@ import { USER_AUTHORIZATION_SUCCESS } from "../constants/constants";
 import { AppThunk } from "../types/types";
 import { IUserAuthorizationSuccess } from "./interfaces";
 
-const userAuthorizationSuccess = (payload: boolean): IUserAuthorizationSuccess => ({ type: USER_AUTHORIZATION_SUCCESS, payload })
+export const userAuthorizationSuccess = (payload: boolean): IUserAuthorizationSuccess => ({ type: USER_AUTHORIZATION_SUCCESS, payload })
 
 export const userAuthorization: AppThunk = (email: string, password: string) => {
     return (dispatch) =>

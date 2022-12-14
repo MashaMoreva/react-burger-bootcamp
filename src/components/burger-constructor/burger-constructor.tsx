@@ -5,7 +5,7 @@ import { OrderRegistration } from '../order-registration/order-registration';
 import { useDrop } from 'react-dnd';
 import { nanoid } from 'nanoid';
 import { setBun, addIngredient } from '../../services/actions/burger-constructor';
-import { useSelector, useDispatch  } from '../../services/hooks';
+import { useSelector, useDispatch } from '../../services/hooks';
 import { useHistory } from 'react-router-dom';
 import { BurgerConstructorElement } from '../burger-constructor-element/burger-constructor-element';
 import { deleteIngredient } from '../../services/actions/burger-constructor';
@@ -80,7 +80,7 @@ export function BurgerConstructor() {
                         )
                 }
                 )}
-                <div className={`${styles.scroll_right} pr-2`}>
+                <div className={`${styles.scroll} pr-2`}>
                     {main.map((element, index) => {
                         if (element.type !== 'bun')
                             return (

@@ -28,7 +28,7 @@ import {
     WS_CONNECTION_CLOSED_USER,
     WS_GET_ORDERS_USER
 } from "../constants/constants"
-import { TIngredientType, TUser, TOrders } from "../types/types"
+import { TIngredientType, TUser, TOrders, TUserOrders } from "../types/types"
 
 export interface IUserAuthorizationSuccess {
     readonly type: typeof USER_AUTHORIZATION_SUCCESS,
@@ -82,12 +82,12 @@ export interface IForgotPasswordSuccess {
     readonly payload: boolean
 }
 
-export interface IAddIgredientDetails {
+export interface IAddIngredientDetails {
     readonly type: typeof ADD_INGREDIENT_DETAILS,
     readonly payload: TIngredientType
 }
 
-export interface IDeleteIgredientDetails {
+export interface IDeleteIngredientDetails {
     readonly type: typeof DELETE_INGREDIENT_DETAILS
 }
 
@@ -160,7 +160,7 @@ export interface IWsConnectionClosedUser {
 
 export interface IWsGetOrdersUser {
     readonly type: typeof WS_GET_ORDERS_USER,
-    readonly payload: TOrders
+    readonly payload: TUserOrders
 }
 
 export type TUnionAction =
@@ -174,8 +174,8 @@ export type TUnionAction =
     | IScrollIngredients
     | IGetBurgerIngredientsSuccess
     | IForgotPasswordSuccess
-    | IAddIgredientDetails
-    | IDeleteIgredientDetails
+    | IAddIngredientDetails
+    | IDeleteIngredientDetails
     | IUserLogoutSuccess
     | IGetOrderDetailsSuccess
     | IUserRegistrationSuccess

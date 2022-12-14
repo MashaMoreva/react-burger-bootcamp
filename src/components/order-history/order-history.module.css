@@ -13,7 +13,7 @@
     display: grid;
     gap: 16px;
     grid-auto-rows: max-content;
-    height: 664px;
+    height: 650px;
     overflow-y: auto;
     list-style-type: none;
 }

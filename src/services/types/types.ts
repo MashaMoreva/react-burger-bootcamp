@@ -11,18 +11,18 @@ export type AppThunk<ReturnType = void> = ActionCreator<
 >;
 
 export type TIngredientType = {
-  _id: string,
-  name: string,
-  type: string,
-  proteins: number,
-  fat: number,
-  carbohydrates: number,
   calories: number,
-  price: number,
+  carbohydrates: number,
+  fat: number,
   image: string,
-  image_mobile: string,
   image_large: string,
+  image_mobile: string,
+  name: string,
+  price: number,
+  proteins: number,
+  type: string,
   __v: number,
+  _id: string,
   id?: string,
 }
 
@@ -109,6 +109,11 @@ export type TOrders = {
   orders: Array<TOrder>,
   total: number,
   totalToday: number
+}
+
+export type TUserOrders = {
+  success: boolean,
+  orders: Array<TOrder>
 }
 
 export type TOrderProps = {

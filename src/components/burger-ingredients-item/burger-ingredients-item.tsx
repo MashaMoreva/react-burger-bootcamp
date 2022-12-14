@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './burger-ingredients-item.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector, useDispatch } from '../../services/hooks';
-import { addIgredientDetails } from '../../services/actions/ingredient-details';
+import { addIngredientDetails } from '../../services/actions/ingredient-details';
 import { useDrag } from 'react-dnd';
 import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -20,7 +20,7 @@ export const BurgerIngredientsItem: FC<TBurgerIngredientsItem> = ({ ingredient }
 
     const dispatch = useDispatch();
     const handleIngredientClick = () => {
-        dispatch(addIgredientDetails(ingredient))
+        dispatch(addIngredientDetails(ingredient))
     }
 
     const [, dragIngredient] = useDrag(() => ({

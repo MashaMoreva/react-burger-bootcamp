@@ -5,7 +5,7 @@ import { TUser } from "../types/types";
 type TInitialState = TUser
 
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   success: false,
   user: {
     email: '',

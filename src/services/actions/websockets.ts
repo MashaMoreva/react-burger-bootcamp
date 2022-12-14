@@ -10,7 +10,7 @@ import {
     WS_CONNECTION_CLOSED_USER,
     WS_GET_ORDERS_USER
 } from "../constants/constants";
-import { TOrders } from "../types/types";
+import { TOrders, TUserOrders } from "../types/types";
 import {
     IWsConnectionStart,
     IWsConnectionSuccess,
@@ -80,7 +80,7 @@ export const wsConnectionClosedUser = (): IWsConnectionClosedUser => {
     };
 };
 
-export const wsGetOrderdsUser = (payload: TOrders): IWsGetOrdersUser => {
+export const wsGetOrderdsUser = (payload: TUserOrders): IWsGetOrdersUser => {
     return {
         type: WS_GET_ORDERS_USER,
         payload

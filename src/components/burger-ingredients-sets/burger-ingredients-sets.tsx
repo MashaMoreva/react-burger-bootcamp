@@ -57,7 +57,7 @@ export function BurgerIngredientsSets() {
 
 
     return (
-        <div className={`${styles.scroll_left} mt-10 pr-2`} ref={scrollRef}>
+        <div className={`${styles.scroll} mt-10 pr-2`} ref={scrollRef}>
             <div>
                 <h3 className="text text_type_main-medium mb-6" ref={bunRef}>Булки</h3>
                 <ul className={`${styles.list} pl-4`}>

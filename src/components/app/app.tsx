@@ -19,6 +19,7 @@ import { Order } from '../order/order';
 import { OrderInfo } from '../../pages/order-info';
 import { OrderUser } from '../order-user/order-user';
 import { ProfileOrderInfo } from '../../pages/profile-order-info';
+import { useSelector } from '../../services/hooks';
 
 export function App() {
 
@@ -29,6 +30,9 @@ export function App() {
   React.useEffect(() => {
     dispatch(getBurgerIngredients())
   }, [dispatch])
+
+  const ingredients = useSelector((store) => store.burgerIngredients.burgerIngredients);
+  console.log(ingredients)
 
   return (
     <>
@@ -45,7 +49,7 @@ export function App() {
         <Route exact path="/feed/:id" component={OrderInfo} />
         <ProtectedRoute exact path="/profile" component={Profile} />
         <ProtectedRoute exact path="/profile/orders" component={Profile} />
-        <ProtectedRoute path="/profile/orders/:id" component={ProfileOrderInfo} />
+        <ProtectedRoute exact path="/profile/orders/:id" component={ProfileOrderInfo} />
       </Switch>
 
       {background && (
@@ -60,7 +64,7 @@ export function App() {
               <Order />
             </Modal>
           </Route>
-          <Route exact path="/profile/orders/:id">
+          <Route path="/profile/orders/:id">
             <Modal>
               <OrderUser />
             </Modal>

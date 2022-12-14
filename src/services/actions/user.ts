@@ -4,7 +4,7 @@ import { AppThunk, TUser } from "../types/types";
 import { IGetUserSuccess, IUpdateUserSuccess } from "./interfaces";
 
 
-const getUserSuccess = (payload: TUser): IGetUserSuccess => ({ type: GET_USER_SUCCESS, payload })
+export const getUserSuccess = (payload: TUser): IGetUserSuccess => ({ type: GET_USER_SUCCESS, payload })
 
 export const getUser: AppThunk = () => {
     return (dispatch) =>
@@ -17,7 +17,7 @@ export const getUser: AppThunk = () => {
             })
 }
 
-const updateUserSuccess = (payload: TUser): IUpdateUserSuccess => ({ type: UPDATE_USER_SUCCESS, payload })
+export const updateUserSuccess = (payload: TUser): IUpdateUserSuccess => ({ type: UPDATE_USER_SUCCESS, payload })
 
 export const updateUser: AppThunk = (name: string, email: string, password: string) => {
     return (dispatch) =>

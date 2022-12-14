@@ -3,7 +3,7 @@ import { GET_BURGER_INGREDIENTS_SUCCESS } from "../constants/constants";
 import { AppThunk, TIngredientType } from "../types/types";
 import { IGetBurgerIngredientsSuccess } from "./interfaces";
 
-const getBurgerIngredientsSuccess = (data: Array<TIngredientType>): IGetBurgerIngredientsSuccess => ({ type: GET_BURGER_INGREDIENTS_SUCCESS, payload: data })
+export const getBurgerIngredientsSuccess = (data: Array<TIngredientType>): IGetBurgerIngredientsSuccess => ({ type: GET_BURGER_INGREDIENTS_SUCCESS, payload: data })
 
 export const getBurgerIngredients: AppThunk = () => {
     return (dispatch) =>

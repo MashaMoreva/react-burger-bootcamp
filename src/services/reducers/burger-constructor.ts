@@ -13,8 +13,8 @@ type TInitialState = {
     bunsList: Array<TIngredientType>
 }
 
-const initialState: TInitialState = {
-    mainList: [], // между булок в конструкторе
+export const initialState: TInitialState = {
+    mainList: [], // между булок в конструкторе 
     bunsList: [] // булки в конструкторе
 }
 

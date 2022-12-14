@@ -21,8 +21,8 @@ export const Profile = () => {
   return (
     <section className={styles.profile}>
       <ProfileMenu />
-      <Route exact={true} path="/profile" component={UpdateProfileForm} />
-      <Route exact={true} path="/profile/orders" component={OrderHistory} />
+      <Route exact path="/profile" component={UpdateProfileForm} />
+      <Route path="/profile/orders" component={OrderHistory} />
     </section>
   )
 }
