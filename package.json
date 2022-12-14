@@ -28,6 +28,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,6 +36,7 @@
     "cypress": "cypress open cache clear",
     "test:cypress": "cypress run"
   },
+  "homepage": "./",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -58,6 +60,7 @@
     "@types/react-router-dom": "^5.3.3",
     "cypress": "^11.2.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
     "prop-types": "^15.8.1"
   }

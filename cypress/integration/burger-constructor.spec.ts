@@ -1,3 +1,11 @@
+import {
+   ingredientClass,
+   closeButtonClass,
+   tabClass,
+   burgerConstructorClass,
+   burgerConstructorIngredientClass
+} from "../../src/utils/test-constants";
+
 export { }
 
 describe('service is available', function () {
@@ -11,40 +19,40 @@ describe('service is available', function () {
    });
 
    it('should open ingredient details', function () {
-      cy.get('[class^=burger-ingredients-item_item]').first().click()
+      cy.get(ingredientClass).first().click()
       cy.contains('Детали ингредиента')
    });
 
    it('should close ingredient details by button', function () {
-      cy.get('[class^=modal_closeButton]').click();
+      cy.get(closeButtonClass).click();
       cy.visit('/');
    });
 
    it('should tab', function () {
-      cy.get('[class^=tab').last().click();
-      cy.wait(1000).get('[class^=tab').first().click();
+      cy.get(tabClass).last().click();
+      cy.wait(1000).get(tabClass).first().click();
    })
 
    it('should scroll', function () {
       cy.get('[class^=burger-ingredients-sets_scroll').scrollTo(0, 500).wait(1000)
-      cy.get('[class^=tab]').last().click()
+      cy.get(tabClass).last().click()
    });
 
    it('should dragndrop ingredients and set bun', function () {
-      cy.get('[class^=burger-ingredients-item_item]').eq(0).drag('[class^=burger-constructor_burger_constructor]')
-      cy.get('[class^=burger-ingredients-item_item]').eq(4).drag('[class^=burger-constructor_burger_constructor]')
-      cy.get('[class^=burger-ingredients-item_item]').eq(1).drag('[class^=burger-constructor_burger_constructor]')
-      cy.get('[class^=burger-ingredients-item_item]').eq(7).drag('[class^=burger-constructor_burger_constructor]')
-      cy.get('[class^=burger-ingredients-item_item]').eq(11).drag('[class^=burger-constructor_burger_constructor]')
-      cy.get('[class^=burger-ingredients-item_item]').eq(4).drag('[class^=burger-constructor_burger_constructor]')
-      cy.get('[class^=burger-ingredients-item_item]').eq(0).drag('[class^=burger-constructor_burger_constructor]')
+      cy.get(ingredientClass).eq(0).drag(burgerConstructorClass)
+      cy.get(ingredientClass).eq(4).drag(burgerConstructorClass)
+      cy.get(ingredientClass).eq(1).drag(burgerConstructorClass)
+      cy.get(ingredientClass).eq(7).drag(burgerConstructorClass)
+      cy.get(ingredientClass).eq(11).drag(burgerConstructorClass)
+      cy.get(ingredientClass).eq(4).drag(burgerConstructorClass)
+      cy.get(ingredientClass).eq(0).drag(burgerConstructorClass)
    })
 
    it('should dragndrop constructor', function () {
-      cy.get('[class^=burger-constructor-element_constructor_element]').eq(0)
-         .drag('[class^=burger-constructor-element_constructor_element]')
-      cy.get('[class^=burger-constructor-element_constructor_element]').eq(1)
-         .drag('[class^=burger-constructor-element_constructor_element]')
+      cy.get(burgerConstructorIngredientClass).eq(0)
+         .drag(burgerConstructorIngredientClass)
+      cy.get(burgerConstructorIngredientClass).eq(1)
+         .drag(burgerConstructorIngredientClass)
    })
 
    it('should delete ingredient from constructor', function () {
@@ -70,8 +78,8 @@ describe('service is available', function () {
 
    it('should order number visible and close ', function () {
       cy.wait(30000).get('[class^=order-details_order_identifier]').and('exist')
-      cy.get('[class^=modal_closeButton]').click();
-      cy.get('[class^=burger-constructor-element_constructor_element]').and('not.exist');
+      cy.get(closeButtonClass).click();
+      cy.get(burgerConstructorIngredientClass).and('not.exist');
    });
 })
 

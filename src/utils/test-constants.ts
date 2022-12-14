@@ -91,66 +91,71 @@ export const ingredients = [
 export const allOrders = {
     "success": true,
     "orders": [
-      {
-        'createdAt': "2022-12-12T08:28:10.901Z",
-        'ingredients': [
-           "60d3b41abdacab0026a733c7",
-           "60d3b41abdacab0026a733cb",
-           "60d3b41abdacab0026a733c7"
-        ],
-        'name': "Био-марсианский флюоресцентный бургер",
-        'number': 11111,
-        'status': "done",
-        'updatedAt': "2022-12-12T08:28:10.901Z",
-        '_id': "6396e61a99a25c001cd6893c"
-     },
-     {
-        'createdAt': "2022-12-12T07:38:02.547Z",
-        'ingredients': [
-           "60d3b41abdacab0026a733c6",
-           "60d3b41abdacab0026a733ce", 
-           "60d3b41abdacab0026a733c6"
-        ],
-        'name': "Традиционный-галактический краторный бургер",
-        'number': 22222,
-        'status': "done",
-        'updatedAt': "2022-12-12T07:38:03.348Z",
-        '_id': "6396da5a99a25c001cd6890d"
-     }
+        {
+            'createdAt': "2022-12-12T08:28:10.901Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c7",
+                "60d3b41abdacab0026a733cb",
+                "60d3b41abdacab0026a733c7"
+            ],
+            'name': "Био-марсианский флюоресцентный бургер",
+            'number': 11111,
+            'status': "done",
+            'updatedAt': "2022-12-12T08:28:10.901Z",
+            '_id': "6396e61a99a25c001cd6893c"
+        },
+        {
+            'createdAt': "2022-12-12T07:38:02.547Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c6",
+                "60d3b41abdacab0026a733ce",
+                "60d3b41abdacab0026a733c6"
+            ],
+            'name': "Традиционный-галактический краторный бургер",
+            'number': 22222,
+            'status': "done",
+            'updatedAt': "2022-12-12T07:38:03.348Z",
+            '_id': "6396da5a99a25c001cd6890d"
+        }
     ],
     "total": 44444,
     "totalToday": 444
-  }
+}
 
-  export const userOrders = {
+export const userOrders = {
     "success": true,
     "orders": [
-      {
-        'createdAt': "2022-12-12T08:28:10.901Z",
-        'ingredients': [
-           "60d3b41abdacab0026a733c7",
-           "60d3b41abdacab0026a733cb",
-           "60d3b41abdacab0026a733c7"
-        ],
-        'name': "Био-марсианский флюоресцентный бургер",
-        'number': 11111,
-        'status': "done",
-        'updatedAt': "2022-12-12T08:28:10.901Z",
-        '_id': "6396e61a99a25c001cd6893c"
-     },
-     {
-        'createdAt': "2022-12-12T07:38:02.547Z",
-        'ingredients': [
-           "60d3b41abdacab0026a733c6",
-           "60d3b41abdacab0026a733ce", 
-           "60d3b41abdacab0026a733c6"
-        ],
-        'name': "Традиционный-галактический краторный бургер",
-        'number': 22222,
-        'status': "done",
-        'updatedAt': "2022-12-12T07:38:03.348Z",
-        '_id': "6396da5a99a25c001cd6890d"
-     }
+        {
+            'createdAt': "2022-12-12T08:28:10.901Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c7",
+                "60d3b41abdacab0026a733cb",
+                "60d3b41abdacab0026a733c7"
+            ],
+            'name': "Био-марсианский флюоресцентный бургер",
+            'number': 11111,
+            'status': "done",
+            'updatedAt': "2022-12-12T08:28:10.901Z",
+            '_id': "6396e61a99a25c001cd6893c"
+        },
+        {
+            'createdAt': "2022-12-12T07:38:02.547Z",
+            'ingredients': [
+                "60d3b41abdacab0026a733c6",
+                "60d3b41abdacab0026a733ce",
+                "60d3b41abdacab0026a733c6"
+            ],
+            'name': "Традиционный-галактический краторный бургер",
+            'number': 22222,
+            'status': "done",
+            'updatedAt': "2022-12-12T07:38:03.348Z",
+            '_id': "6396da5a99a25c001cd6890d"
+        }
     ]
-  }
- 
+}
+
+export const ingredientClass = '[class^=burger-ingredients-item_item]';
+export const closeButtonClass = '[class^=modal_closeButton]';
+export const tabClass = '[class^=tab]';
+export const burgerConstructorClass = '[class^=burger-constructor_burger_constructor]';
+export const burgerConstructorIngredientClass = '[class^=burger-constructor-element_constructor_element]';
