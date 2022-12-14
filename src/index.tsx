@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <Router basename='https://mashamoreva.github.io/react-burger/'>
+  <Router>
     <Provider store={store}>
       <React.StrictMode>
         <App />
