@@ -16,6 +16,12 @@
 * Redux
 * TypeScript
 * Redux Thunk (запросы к серверу проходят через усилители)
+* Jest и Cypress (использованы для тестирования)
+
+**Доступные скрипты**
+* клонирование репозитория: git clone
+* запуск проекта: npm start
+* публикация проекта на GitHub Pages: npm run deploy
 
 **Посмотреть**
 * [на GitHub Pages](https://mashamoreva.github.io/react-burger/)
