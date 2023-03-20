@@ -23,4 +23,4 @@ SPA-приложение космической бургерной для шир
 * публикация проекта на GitHub Pages: npm run deploy
 
 #### Ссылка на проект
-* [на GitHub Pages](https://mashamoreva.github.io/react-burger/)
+* [на GitHub Pages](https://mashamoreva.github.io/react-burger-bootcamp/)
